@@ -65,21 +65,38 @@ class SignInPage extends React.Component {
 
   state = {
     email: "",
-    password: ""
+    password: "",
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    }) 
+    })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(this.state)
-    // Send the data from the form to the sever in order to authenticate the user
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.sendSignInDataToRails();
+  };
+
+  sendSignInDataToRails = () => {
+    const configurationObject = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    };
+
+    return fetch("http://localhost:3000/sign-in", configurationObject)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
+      // .then(json => this.props.signIn(json.email))
+      .catch((error) => console.log(error.message))
   }
-  
+
 
   render() {
 
