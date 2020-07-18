@@ -1,4 +1,5 @@
 import React from 'react';
+import API from "../API"
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,7 +12,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-// for class
+// for class function
 import { withStyles } from "@material-ui/core/styles";
 // for Hook use makeStyles
 // import { makeStyles } from '@material-ui/core/styles';
@@ -73,30 +74,13 @@ class SignInPage extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-
-
+ 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.sendSignInDataToRails();
-  };
-
-  sendSignInDataToRails = () => {
-    const configurationObject = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(this.state)
-    };
-
-    return fetch("http://localhost:3000/sign-in", configurationObject)
-      .then(resp => resp.json())
-      .then(json => console.log(json))
-      // .then(json => this.props.signIn(json.email))
+    API.signIn(this.state)
+      .then(json => this.props.signIn(json.email, json.token))
       .catch((error) => console.log(error.message))
-  }
-
+  };
 
   render() {
 
@@ -115,7 +99,7 @@ class SignInPage extends React.Component {
             <Typography component="h1" variant="h5">
               Sign in
           </Typography>
-            <form className={classes.form} noValidate onSubmit={this.handleSubmit}>
+            <form className={classes.form} onSubmit={this.handleSubmit}>
               <TextField
                 variant="outlined"
                 margin="normal"
