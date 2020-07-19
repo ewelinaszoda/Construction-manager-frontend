@@ -61,8 +61,9 @@ const styles = theme => ({
   },
 });
 
-
 class SignInPage extends React.Component {
+
+  static contextType = this.SignContext;
 
   state = {
     email: "",
@@ -74,11 +75,14 @@ class SignInPage extends React.Component {
       [e.target.name]: e.target.value
     })
   }
- 
+
   handleSubmit = (event) => {
     event.preventDefault();
     API.signIn(this.state)
-      .then(json => this.props.signIn(json.email, json.token))
+      .then(jso => {
+        console.log(jso)
+        // this.context(jso.user, jso.token)
+      })
       .catch((error) => console.log(error.message))
   };
 
@@ -146,7 +150,7 @@ class SignInPage extends React.Component {
                 </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/sign-up" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
