@@ -78,12 +78,13 @@ class SignInPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    event.target.reset();
     API.signIn(this.state)
+      .then(console.log)
       .then(jso => {
-        console.log(jso)
-        // this.context(jso.user, jso.token)
+        this.context(jso.user, jso.token)
       })
-      .catch((error) => console.log(error.message))
+      .catch(error => console.log(error.message))
   };
 
   render() {

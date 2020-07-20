@@ -2,8 +2,8 @@
 import React from "react";
 import 'fontsource-roboto';
 import API from "./API"
-import MainPages from './pages/MainPages';
-// import SignInSignUpPages from './pages/SignInSignUpPages';
+// import MainPages from './pages/MainPages';
+import SignInSignUpPages from './pages/SignInSignUpPages';
 // import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 // import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
@@ -22,12 +22,11 @@ export default class App extends React.Component {
     }
   }
 
-  LogOut = () => {
-    this.setState({
-      user: null
-    })
-    localStorage.removeItem("token")
-  }
+signUp = (user) => {
+ this.setState({
+   user
+ })
+}
 
   signIn = (user, token) => {
     this.setState({
@@ -36,14 +35,22 @@ export default class App extends React.Component {
     localStorage.token = token
   }
 
+  LogOut = () => {
+    this.setState({
+      user: null
+    })
+    localStorage.removeItem("token")
+  }
+
+
   render() {
     return (
-      <SignContext.Provider signIn={this.signIn}>
+      <SignContext.Provider signIn={this.signIn} signUp={this.signUp}>
          {/* {this.state.user
         ? <MainPages />
         : <SignInSignUpPages />} */}
-         <MainPages /> 
-        {/* <SignInSignUpPages /> */}
+         {/* <MainPages />  */}
+        <SignInSignUpPages />
       </SignContext.Provider>
     )
   }
