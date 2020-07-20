@@ -1,13 +1,15 @@
 import React from "react"
 import PrimarySearchAppBar from "../components/PrimarySearchAppBar.js"
-import GetCurrentDateDiv from  "../components/GetCurrentDate.js"
+import GetCurrentDate from  "../components/GetCurrentDate.js"
+import MeetingsNotesContainer from "../containers/MeetingsNotesContainer.js"
 
 const Home = (props) => {
 
   return (
     <div>
-      <PrimarySearchAppBar logOut={props.logOut}/>
-      <GetCurrentDateDiv/>
+      <PrimarySearchAppBar logOut={props.logOut} />
+      <GetCurrentDate />
+      <MeetingsNotesContainer />
     </div>
   )
 
