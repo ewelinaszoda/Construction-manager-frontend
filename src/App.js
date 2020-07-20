@@ -2,12 +2,13 @@
 import React from "react";
 import 'fontsource-roboto';
 import API from "./API"
-// import MainPages from './pages/MainPages';
+import MainPages from './pages/MainPages';
 import SignInSignUpPages from './pages/SignInSignUpPages';
 // import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 // import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
-const SignContext = React.createContext('signIn')
+const SignContext = React.createContext()
+
 
 export default class App extends React.Component {
 
@@ -18,15 +19,17 @@ export default class App extends React.Component {
   componentDidMount() {
     if (localStorage.token) {
       API.validate(localStorage.token)
-        .then(json => this.signIn(json.user, json.token))
+        .then(json => {
+          this.signIn(json.user, json.token)
+        })
     }
   }
 
-signUp = (user) => {
- this.setState({
-   user
- })
-}
+  signUp = (user) => {
+    this.setState({
+      user
+    })
+  }
 
   signIn = (user, token) => {
     this.setState({
@@ -46,12 +49,12 @@ signUp = (user) => {
   render() {
     return (
       <SignContext.Provider signIn={this.signIn} signUp={this.signUp}>
-         {/* {this.state.user
+         {this.state.user
         ? <MainPages />
-        : <SignInSignUpPages />} */}
-         {/* <MainPages />  */}
-        <SignInSignUpPages />
+        : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
       </SignContext.Provider>
     )
   }
 }
+
+export { SignContext };

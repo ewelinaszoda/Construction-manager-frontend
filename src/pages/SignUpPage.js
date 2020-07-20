@@ -63,24 +63,24 @@ class SignUpPage extends React.Component {
     })
   }
 
+  // JOE WAY
   handleCreate = (event) => {
     event.preventDefault();
     event.target.reset();
     API.signUp(this.state)
-      .then((res) => res.json())
-      .then((res) => {
+      .then(res => {
         localStorage.setItem("jwt", res.jwt);
         return res;
       })
-      .then(console.log)
       .catch(error => console.log(error.message))
   };
 
+  //DAN WAY
   // handleCreate = (event) => {
   //   event.preventDefault();
   //   event.target.reset();
   //   const { name, surname, email, password, phone_number } = this.state;
-  //   const userData = {  name, surname, email, password, phone_number };
+  //   const userData = { name, surname, email, password, phone_number };
   //   fetch("http://localhost:3000/users", {
   //     method: "POST",
   //     headers: {
@@ -94,7 +94,7 @@ class SignUpPage extends React.Component {
   //       localStorage.setItem("jwt", res.jwt);
   //       return res;
   //     })
-  //     .then(console.log);
+  //     .catch(error => console.log(error.message))
   // };
 
 

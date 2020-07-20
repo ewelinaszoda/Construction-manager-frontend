@@ -13,10 +13,10 @@ const SignInSignUpPages = (props) => {
     <Router>
       <Switch>
         <Route path="/sign-up">
-          <SignUpPage />
+          <SignUpPage signUp={props.signUp}/>
         </Route>
         <Route path="/">
-          <SignInPage />
+          <SignInPage signIn={props.signIn}/>
         </Route>
       </Switch>
     </Router>

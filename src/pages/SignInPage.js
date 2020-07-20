@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import API from "../API"
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -61,14 +61,19 @@ const styles = theme => ({
   },
 });
 
+
 class SignInPage extends React.Component {
 
-  static contextType = this.SignContext;
+  static contextType = createContext();
 
   state = {
     email: "",
     password: "",
   }
+
+  // componentDidMount() {
+  //   debugger
+  // }
 
   handleChange = (e) => {
     this.setState({
@@ -80,9 +85,11 @@ class SignInPage extends React.Component {
     event.preventDefault();
     event.target.reset();
     API.signIn(this.state)
-      .then(console.log)
+      //.then(console.log) after console.log undefined
       .then(jso => {
-        this.context(jso.user, jso.token)
+        // debugger
+        this.props.signIn(jso.user, jso.token)
+        //this.context(jso.user, jso.token)
       })
       .catch(error => console.log(error.message))
   };
