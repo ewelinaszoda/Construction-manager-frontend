@@ -76,26 +76,26 @@ class SignUpPage extends React.Component {
   };
 
   //DAN WAY
-  // handleCreate = (event) => {
-  //   event.preventDefault();
-  //   event.target.reset();
-  //   const { name, surname, email, password, phone_number } = this.state;
-  //   const userData = { name, surname, email, password, phone_number };
-  //   fetch("http://localhost:3000/users", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify({ user: userData }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       localStorage.setItem("jwt", res.jwt);
-  //       return res;
-  //     })
-  //     .catch(error => console.log(error.message))
-  // };
+  handleCreate = (event) => {
+    event.preventDefault();
+    event.target.reset();
+    const { name, surname, email, password, phone_number } = this.state;
+    const userData = { name, surname, email, password, phone_number };
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ user: userData }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        localStorage.setItem("jwt", res.jwt);
+        return res;
+      })
+      .catch(error => console.log(error.message))
+  };
 
 
   render() {
@@ -216,3 +216,8 @@ class SignUpPage extends React.Component {
 }
 
 export default withStyles(styles)(SignUpPage);
+
+
+
+
+

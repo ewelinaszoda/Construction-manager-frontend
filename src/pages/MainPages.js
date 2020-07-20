@@ -7,14 +7,15 @@ import {
 import AccountPage from "./AccountPage"
 import ProjectsPage from "./ProjectsPage"
 import Home from "./Home"
+import  { Redirect } from 'react-router-dom'
 
-const MainPages = () => {
+const MainPages = (props) => {
 
   return (
     <Router>
       <Switch>
         <Route exact path="/home">
-          <Home />
+          <Home logOut={props.logOut} />
         </Route>
         <Route exact path="/projects">
           <ProjectsPage />
@@ -23,6 +24,7 @@ const MainPages = () => {
         </Route>
         </Route>
       </Switch>
+      <Redirect to="/home" />
     </Router>
   )
 }

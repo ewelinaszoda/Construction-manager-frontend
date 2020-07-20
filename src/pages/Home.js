@@ -2,11 +2,11 @@ import React from "react"
 import PrimarySearchAppBar from "../components/PrimarySearchAppBar.js"
 import GetCurrentDateDiv from  "../components/GetCurrentDate.js"
 
-const Home = () => {
+const Home = (props) => {
 
   return (
     <div>
-      <PrimarySearchAppBar/>
+      <PrimarySearchAppBar logOut={props.logOut}/>
       <GetCurrentDateDiv/>
     </div>
   )

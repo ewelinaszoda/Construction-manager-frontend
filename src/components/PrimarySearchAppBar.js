@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -104,6 +104,11 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  // const onClick(event) {
+  //   handleMenuClose;
+  //   logOut()
+  // }
+ 
   const menuId = 'primary-search-account-menu';
   
   const renderMenu = (
@@ -118,6 +123,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
       <MenuItem onClick={handleMenuClose}>Log out</MenuItem>
+      <button onClick={() => props.logOut()}>Logout</button>
     </Menu>
   );
 

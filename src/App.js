@@ -38,7 +38,7 @@ export default class App extends React.Component {
     localStorage.token = token
   }
 
-  LogOut = () => {
+  logOut = () => {
     this.setState({
       user: null
     })
@@ -50,7 +50,7 @@ export default class App extends React.Component {
     return (
       <SignContext.Provider signIn={this.signIn} signUp={this.signUp}>
          {this.state.user
-        ? <MainPages />
+        ? <MainPages logOut={this.logOut} />
         : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
       </SignContext.Provider>
     )
