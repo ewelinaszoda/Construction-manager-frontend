@@ -6,7 +6,7 @@ import SignInSignUpPages from './pages/SignInSignUpPages';
 // import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 // import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
-const SignContext = React.createContext()
+// const SignContext = React.createContext()
 
 
 export default class App extends React.Component {
@@ -49,14 +49,26 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <SignContext.Provider signIn={this.signIn} signUp={this.signUp}>
+      <div>
          {this.state.user
         ? <MainPages logOut={this.logOut} />
         : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
         {/* <MainPages logOut={this.logOut} /> */}
-      </SignContext.Provider>
+      </div>
     )
   }
 }
 
-export { SignContext };
+// export { SignContext };
+
+// render() {
+//   return (
+//     <SignContext.Provider signIn={this.signIn} signUp={this.signUp}>
+//        {this.state.user
+//       ? <MainPages logOut={this.logOut} />
+//       : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
+//       {/* <MainPages logOut={this.logOut} /> */}
+//     </SignContext.Provider>
+//   )
+// }
+// }

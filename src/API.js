@@ -35,4 +35,9 @@ const signUp = (data) => post(signUpURL, data).then(resp => resp.json()).catch(e
 
 const getProjects = () => get(projectsURL).then(resp => resp.json()).catch(error => console.log(error.message))
 
-export default { get, signIn, validate, signUp, getProjects }
+const getProjectDetails = (id) => {
+  return fetch(projectsURL + `${id}`)
+    .then(resp => resp.json())
+}
+
+export default { get, signIn, validate, signUp, getProjects, getProjectDetails }
