@@ -1,5 +1,4 @@
-import React, { createContext } from 'react';
-import API from "../API"
+import React, { useState, useContext } from 'react';
 // import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,13 +9,18 @@ import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import { useHistory } from 'react-router-dom';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 // for class function
 import { withStyles } from "@material-ui/core/styles";
 // for Hook use makeStyles
-// import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import logo from "../images/logo.png";
+import { post, SIGN_IN_URL } from '../utils/api-helpers';
+import {CreateUserContext} from '../context/CurrentUserContext';
+
+import './SignInPage.css'
 
 function Copyright() {
   return (
@@ -31,7 +35,7 @@ function Copyright() {
   );
 }
 
-const styles = theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
@@ -64,44 +68,45 @@ const styles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-});
+}));
 
 
-class SignInPage extends React.Component {
-
-  static contextType = createContext();
-
-  state = {
+export const SignInPage = () => {
+  const { push } = useHistory();
+  const [, setUser] = useContext(CreateUserContext);
+  const [state, setState] = useState({
     email: "",
     password: "",
-  }
+    error: null
+  })
 
-  // componentDidMount() {
-  //   debugger
-  // }
-
-  handleChange = (e) => {
-    this.setState({
+  const handleChange = (e) => {
+    setState({
       [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    event.target.reset();
-    API.signIn(this.state)
-      //.then(console.log) after console.log undefined
-      .then(jso => {
-        // debugger
-        this.props.signIn(jso.user, jso.token)
-        //this.context(jso.user, jso.token)
-      })
-      .catch(error => console.log(error.message))
+
+    try {
+      const response = await post(SIGN_IN_URL, state);
+
+      setUser(response);
+      localStorage.setItem('accessToken', response.token);
+      push('/home');
+    }
+    catch(error) {
+      setState({...state, error: error.message})
+      console.error(error.message);
+    }
   };
 
-  render() {
+  // render() {
 
-    const { classes } = this.props;
+  //   const { classes } = this.props;
+    const classes = useStyles();
+
 
     return (
       <Grid container component="main" className={classes.root}>
@@ -109,6 +114,7 @@ class SignInPage extends React.Component {
         <Grid item xs={false} sm={4} md={7} className={classes.image}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          {state.error && <p>{state.error }</p>}
           <div className={classes.paper}>
           <img src={logo} alt="Logo" className={classes.logo} />
             {/* <Avatar className={classes.avatar}>
@@ -117,7 +123,7 @@ class SignInPage extends React.Component {
             <Typography component="h1" variant="h5">
               Sign in
           </Typography>
-            <form className={classes.form} onSubmit={this.handleSubmit}>
+            <form className={classes.form} onSubmit={handleSubmit}>
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -128,8 +134,8 @@ class SignInPage extends React.Component {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                value={this.state.email}
-                onChange={this.handleChange}
+                value={state.email}
+                onChange={handleChange}
               />
               <TextField
                 variant="outlined"
@@ -141,8 +147,8 @@ class SignInPage extends React.Component {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value={this.state.password}
-                onChange={this.handleChange}
+                value={state.password}
+                onChange={handleChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -177,7 +183,4 @@ class SignInPage extends React.Component {
         </Grid>
       </Grid>
     )
-  }
-}
-
-export default withStyles(styles)(SignInPage);
+  };

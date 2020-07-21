@@ -4,7 +4,7 @@ import GetCurrentDate from  "../components/GetCurrentDate.js"
 import MeetingsNotesContainer from "../containers/MeetingsNotesContainer.js"
 import Box from '@material-ui/core/Box';
 
-const Home = (props) => {
+export const Home = props => {
 
   return (
     <div>
@@ -15,5 +15,4 @@ const Home = (props) => {
     </div>
   )
 
-}
-export default Home
+};
