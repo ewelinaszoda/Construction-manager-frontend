@@ -25,7 +25,6 @@ export default class App extends React.Component {
     }
   }
 
-
   signUp = (user) => {
     this.setState({
       user
@@ -45,7 +44,6 @@ export default class App extends React.Component {
     })
     localStorage.removeItem("token")
   }
-
 
   render() {
     return (

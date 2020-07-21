@@ -1,5 +1,6 @@
 import React from "react"
 import Box from '@material-ui/core/Box';
+import DetailsProject from "../components/DetailsProject.js"
 
 export default function ProjectsContainer() {
 
