@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import React from "react";
 import 'fontsource-roboto';
 import API from "./API"
@@ -14,6 +13,7 @@ export default class App extends React.Component {
 
   state = {
     user: null,
+    projects: null,
   }
 
   componentDidMount() {
@@ -24,6 +24,7 @@ export default class App extends React.Component {
         })
     }
   }
+
 
   signUp = (user) => {
     this.setState({
@@ -52,6 +53,7 @@ export default class App extends React.Component {
          {this.state.user
         ? <MainPages logOut={this.logOut} />
         : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
+        {/* <MainPages logOut={this.logOut} /> */}
       </SignContext.Provider>
     )
   }

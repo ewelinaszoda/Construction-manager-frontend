@@ -24,7 +24,7 @@ const MainPages = (props) => {
         </Route>
         </Route>
       </Switch>
-      <Redirect to="/home" />
+      <Redirect to="/home" />  
     </Router>
   )
 }

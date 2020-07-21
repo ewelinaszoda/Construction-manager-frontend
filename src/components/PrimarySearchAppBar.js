@@ -12,6 +12,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from "../images/logo.png";
+import Tooltip from '@material-ui/core/Tooltip';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -116,7 +118,10 @@ export default function PrimarySearchAppBar(props) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My Account</MenuItem>
+      <MenuItem 
+        component={Link} to='/account'
+        onClick={handleMenuClose}>My Account
+      </MenuItem>
       <MenuItem onClick={() => {props.logOut(); handleMenuClose()}}>Log out</MenuItem>
     </Menu>
   );
@@ -133,13 +138,18 @@ export default function PrimarySearchAppBar(props) {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton  color="inherit">
+        <IconButton  color="inherit"
+         component={Link} to='/home'
+        >
           <HomeIcon />
         </IconButton>
         <p>Home</p>
       </MenuItem>
       <MenuItem>
-        <IconButton color="inherit">
+        <IconButton 
+        color="inherit" 
+        component={Link} to='/projects'
+        >
           <ApartmentIcon />
         </IconButton>
         <p>My Projects</p>
@@ -150,6 +160,7 @@ export default function PrimarySearchAppBar(props) {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
+          
         >
           <AccountCircle />
         </IconButton>
@@ -178,18 +189,25 @@ export default function PrimarySearchAppBar(props) {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton  
-            color="inherit"
-            aria-label="Home"
-            >
+            <Tooltip title="Home">
+              <IconButton  
+              color="inherit"
+              aria-label="Home"
+              component={Link} to='/home'
+              >
                 <HomeIcon />
-            </IconButton>
-            <IconButton 
+              </IconButton>
+              </Tooltip>
+              <Tooltip title="My Projects">
+              <IconButton 
             color="inherit"
             aria-label="My Projects"
+            component={Link} to='/projects'
             >
                 <ApartmentIcon/>
             </IconButton>
+            </Tooltip>
+            <Tooltip title="Profile">
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -197,10 +215,11 @@ export default function PrimarySearchAppBar(props) {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-              label="Account"
+              label="Profile"
             >
               <AccountCircle />
             </IconButton>
+            </Tooltip>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -209,7 +228,6 @@ export default function PrimarySearchAppBar(props) {
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
-
             >
               <MoreIcon />
             </IconButton>

@@ -1,17 +1,15 @@
 import React from "react"
 import Box from '@material-ui/core/Box';
-import Meeting from  "../components/Meeting.js"
 
-const MeetingsContainer = () => {
+const Meeting = () => {
 
   return (
     <div style={{ width: '100%' }}>
-      <h3>MEETINGS</h3>
       <Box bgcolor="background.paper">
-        <Meeting />
+        Note no 1
       </Box>
     </div >
   )
 
 }
-export default MeetingsContainer;
+export default Meeting;

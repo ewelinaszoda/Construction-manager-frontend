@@ -2,16 +2,16 @@ const baseURL = "http://localhost:3000"
 const signUpURL = `${baseURL}/users`
 const signInURL = `${baseURL}/sign-in`
 const validateURL = `${baseURL}/validate`
+const projectsURL = `${baseURL}/projects`
 
-const get = (url, token) => {
+const get = (url) => {
   const configurationObject = {
     headers: {
-      "Authorization": token
+      "Authorization": localStorage.token
     }
   }
   return fetch(url, configurationObject)
 }
-
 
 const post = (url, data) => {
   const configurationObject = {
@@ -33,4 +33,6 @@ const validate = (token) => get(validateURL, token).then(resp => resp.json()).ca
 
 const signUp = (data) => post(signUpURL, data).then(resp => resp.json()).catch(error => console.log(error.message))
 
-export default { get, signIn, validate, signUp }
+const getProjects = () => get(projectsURL).then(resp => resp.json()).catch(error => console.log(error.message))
+
+export default { get, signIn, validate, signUp, getProjects }
