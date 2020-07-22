@@ -5,7 +5,7 @@ import ListProjects from "../components/ListProjects.js"
 import DetailsProject from "../components/DetailsProject.js"
 import API from "../API.js"
 
-export default function ProjectsPage({logOut}) {
+export const ProjectsPage = ({logOut}) => {
 
   const[projects, setProjects] = useState([])
   const[projectId, setProjectId] = useState(null)
@@ -17,11 +17,11 @@ export default function ProjectsPage({logOut}) {
   }, [])
 
   const removeProject = (id) => {
-    setProjects(projects.filter(projectId => projectId !== id))
+    // setProjects(projects.filter(projectId => projectId !== id))
   }
 
   const myProject = () => {
-    return projects.filter(project => projects.includes(project.id))
+    // return projects.filter(project => projects.includes(project.id))
   }
 
   const handleClick = (id) => {

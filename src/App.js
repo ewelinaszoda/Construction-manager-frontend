@@ -1,61 +1,103 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import API from './API'
 import 'fontsource-roboto';
-import API from "./API"
-import MainPages from './pages/MainPages';
-import SignInSignUpPages from './pages/SignInSignUpPages';
+import {
+  BrowserRouter as Router,
+  Switch,
+} from "react-router-dom";
+import { AppRoute, PrivateRoute } from './components/Routes';
+import { SignInPage, Home, ProjectsPage } from './pages';
+import { CreateUserContext, emptyUser } from './context/CurrentUserContext';
+// import API from "./API"
+// import MainPages from './pages/MainPages';
+// import SignInSignUpPages from './pages/SignInSignUpPages';
 // import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 // import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
 // const SignContext = React.createContext()
 
 
-export default class App extends React.Component {
+export const App = () => {
 
-  state = {
+  const user = useState(emptyUser())
+
+  const [state, setState] = useState({
     user: null,
     projects: null,
-  }
+  })
 
-  componentDidMount() {
+  // state = {
+  //   user: null,
+  //   projects: null,
+  // }
+
+  useEffect(() => {
     if (localStorage.token) {
       API.validate(localStorage.token)
-        .then(json => {
-          this.signIn(json.user, json.token)
-        })
+        .then(json => signIn(json.user, json.token))
     }
-  }
+  }, [])
 
-  signUp = (user) => {
-    this.setState({
+  const signUp = (user) => {
+    setState({
       user
     })
   }
 
-  signIn = (user, token) => {
-    this.setState({
+  const signIn = (user, token) => {
+    setState({
       user
     })
     localStorage.token = token
   }
 
-  logOut = () => {
-    this.setState({
+  const logOut = () => {
+    setState({
       user: null
     })
     localStorage.removeItem("token")
   }
 
-  render() {
-    return (
-      <div>
-         {this.state.user
+  return (
+    <CreateUserContext.Provider value={user}>
+      <div className="app">
+        <Router>
+          <Switch>
+            <AppRoute path="/" exact component={SignInPage} signUp={signUp} signIn={signIn}/>
+            <PrivateRoute path="/home" exact component={Home} logOut={logOut} user={state.user} />
+            <PrivateRoute path="/projects" exact component={ProjectsPage} />
+          </Switch>
+        </Router>
+
+        {/* {this.state.user
         ? <MainPages logOut={this.logOut} />
         : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
-        {/* <MainPages logOut={this.logOut} /> */}
+        <MainPages logOut={this.logOut} /> */}
       </div>
-    )
-  }
+    </CreateUserContext.Provider>
+  )
 }
+
+  // componentDidMount() {
+  //   if (localStorage.token) {
+  //     API.validate(localStorage.token)
+  //       .then(json => {
+  //         this.signIn(json.user, json.token)
+  //       })
+  //   }
+  // }
+
+
+  //   return (
+  //     <div>
+  //       {state.user
+  //         ? <MainPages logOut={this.logOut} />
+  //         : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} />}
+  //       {/* <MainPages logOut={this.logOut} /> */}
+  //     </div>
+  //   )
+  // }
+
 
 // export { SignContext };
 
