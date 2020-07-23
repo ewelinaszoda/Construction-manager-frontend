@@ -1,6 +1,4 @@
 import React, { useState, useContext } from 'react';
-// import React, { createContext } from 'react';
-// import API from "../API"
 // import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,13 +13,12 @@ import { useHistory } from 'react-router-dom';
 // import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 // for class function
-// import { withStyles } from "@material-ui/core/styles";
 // for Hook use makeStyles
 import { makeStyles } from '@material-ui/core/styles';
 import logo from "../images/logo.png";
-// import API from "../API"
 import { post, SIGN_IN_URL } from '../utils/api-helpers';
-import { CreateUserContext } from '../context/CurrentUserContext';
+import {CreateUserContext} from '../context/CurrentUserContext';
+
 
 function Copyright() {
   return (
@@ -71,10 +68,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export const SignInPage = () => {
-
-  const classes = useStyles();
-
   const { push } = useHistory();
   const [, setUser] = useContext(CreateUserContext);
   const [state, setState] = useState({
@@ -82,12 +77,6 @@ export const SignInPage = () => {
     password: "",
     error: null
   })
-
-  // state = {
-  //   email: "",
-  //   password: "",
-  // }
-
 
   const handleChange = (e) => {
     setState({
@@ -105,91 +94,91 @@ export const SignInPage = () => {
       localStorage.setItem('accessToken', response.token);
       push('/home');
     }
-    catch (error) {
-      setState({ ...state, error: error.message })
+    catch(error) {
+      setState({...state, error: error.message})
       console.error(error.message);
-
-      // event.target.reset();
-      // API.signIn(this.state)
-      //   .then(jso => {
-      //     this.props.signIn(jso.user, jso.token)
-      //   })
-      //   .catch(error => console.log(error.message))
     }
-  }
+  };
 
-  return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image}
-      />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
+  // render() {
+
+  //   const { classes } = this.props;
+    const classes = useStyles();
+
+
+    return (
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image}
+        />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          {state.error && <p>{state.error }</p>}
+          <div className={classes.paper}>
           <img src={logo} alt="Logo" className={classes.logo} />
-          {/* <Avatar className={classes.avatar}>
+            {/* <Avatar className={classes.avatar}>
               <LockOutlinedIcon /> 
              </Avatar>  */}
-          <Typography component="h1" variant="h5">
-            Sign in
+            <Typography component="h1" variant="h5">
+              Sign in
           </Typography>
-          <form className={classes.form} onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={state.email}
-              onChange={handleChange}
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={state.password}
-              onChange={handleChange}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Sign In
+            <form className={classes.form} onSubmit={handleSubmit}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                value={state.email}
+                onChange={handleChange}
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={state.password}
+                onChange={handleChange}
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2">
+                    Forgot password?
                 </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="/sign-up" variant="body2">
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link href="/sign-up" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </form>
-        </div>
+              <Box mt={5}>
+                <Copyright />
+              </Box>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-  )
-}
+    )
+  };

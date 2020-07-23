@@ -3,7 +3,7 @@ import PrimarySearchAppBar from "../components/PrimarySearchAppBar.js"
 import Box from '@material-ui/core/Box';
 import ListProjects from "../components/ListProjects.js"
 import DetailsProject from "../components/DetailsProject.js"
-import API from "../API.js"
+// import API from "../API"
 
 export const ProjectsPage = ({logOut}) => {
 
@@ -11,17 +11,17 @@ export const ProjectsPage = ({logOut}) => {
   const[projectId, setProjectId] = useState(null)
 
   useEffect(() => {
-    API.getProjects()
-    .then(projects => setProjects(projects.projects))
-    .catch(error => console.log(error.message))
+  //   API.getProjects()
+  //   .then(projects => setProjects(projects.projects))
+  //   .catch(error => console.log(error.message))
   }, [])
 
   const removeProject = (id) => {
-    // setProjects(projects.filter(projectId => projectId !== id))
+    setProjects(projects.filter(projectId => projectId !== id))
   }
 
   const myProject = () => {
-    // return projects.filter(project => projects.includes(project.id))
+    return projects.filter(project => projects.includes(project.id))
   }
 
   const handleClick = (id) => {

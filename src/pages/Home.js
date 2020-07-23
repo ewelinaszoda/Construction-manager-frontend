@@ -14,4 +14,5 @@ export const Home = props => {
       <MeetingsNotesContainer />
     </div>
   )
-}
+
+};

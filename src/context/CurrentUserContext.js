@@ -2,7 +2,7 @@ import {createContext} from 'react';
 
 export const emptyUser = () => ({
   id: null,
-  name: ''
+  email: ''
 });
 
 export const CreateUserContext = createContext([

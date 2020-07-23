@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
-import { useHistory} from 'react-router-dom';
-import { AppRoute} from './'
+import { useHistory } from 'react-router-dom';
+import { AppRoute } from './'
 import { CreateUserContext } from '../../context/CurrentUserContext';
 import { post, SIGN_IN_URL } from '../../utils/api-helpers';
 
@@ -13,7 +13,7 @@ export const PrivateRoute = props => {
 
   const restoreSession = async () => {
     try {
-      const response = await post(SIGN_IN_URL, {});
+      const response = await post(SIGN_IN_URL, {user});
 
       setUser(response);
       localStorage.setItem('accessToken', response.token);

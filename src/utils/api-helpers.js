@@ -26,21 +26,15 @@ export const post = (url, data) => {
   };
   return fetch(url, configurationObject)
 
-  // return {
-  // id: 123,
-  //  user: 'Ewelina',
-  // token: '123123123'
-  // }
-
 }
 
-export const validate = (token) => get(VALIDATE_URL, token).then(resp => resp.json()).catch(error => console.log(error.message))
+// const validate = (token) => get(validateURL, token).then(resp => resp.json()).catch(error => console.log(error.message))
 
-export const signUp = (data) => post(SIGN_UP_URL, data).then(resp => resp.json()).catch(error => console.log(error.message))
+// const signUp = (data) => post(signUpURL, data).then(resp => resp.json()).catch(error => console.log(error.message))
 
-export const getProjects = () => get(PROJECTS_URL).then(resp => resp.json()).catch(error => console.log(error.message))
+// const getProjects = () => get(projectsURL).then(resp => resp.json()).catch(error => console.log(error.message))
 
-export const getProjectDetails = (id) => {
-  return fetch(PROJECTS_URL + `${id}`)
-    .then(resp => resp.json())
-}
+// const getProjectDetails = (id) => {
+//   return fetch(projectsURL + `${id}`)
+//     .then(resp => resp.json())
+// }
