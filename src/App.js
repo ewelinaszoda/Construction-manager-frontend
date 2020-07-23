@@ -6,8 +6,6 @@ import SignInSignUpPages from './pages/SignInSignUpPages';
 // import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 // import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
 
-// const SignContext = React.createContext()
-
 
 export default class App extends React.Component {
 
@@ -27,13 +25,13 @@ export default class App extends React.Component {
 
   signUp = (user) => {
     this.setState({
-      user
+      user: user
     })
   }
 
   signIn = (user, token) => {
     this.setState({
-      user
+      user: user
     })
     localStorage.token = token
   }
@@ -46,6 +44,8 @@ export default class App extends React.Component {
   }
 
   render() {
+    debugger
+
     return (
       <div>
          {this.state.user

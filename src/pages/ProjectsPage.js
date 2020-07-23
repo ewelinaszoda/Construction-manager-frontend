@@ -8,13 +8,17 @@ import API from "../API.js"
 export default function ProjectsPage({logOut}) {
 
   const[projects, setProjects] = useState([])
-  const[projectId, setProjectId] = useState(null)
+  // const[projectId, setProjectId] = useState(null)
 
   useEffect(() => {
     API.getProjects()
     .then(projects => setProjects(projects.projects))
     .catch(error => console.log(error.message))
   }, [])
+
+  const addProject = (project) => {
+    setProjects({projects: [...projects, project]})
+  }
 
   const removeProject = (id) => {
     setProjects(projects.filter(projectId => projectId !== id))

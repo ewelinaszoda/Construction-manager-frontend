@@ -76,10 +76,6 @@ class SignInPage extends React.Component {
     password: "",
   }
 
-  // componentDidMount() {
-  //   debugger
-  // }
-
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -90,11 +86,8 @@ class SignInPage extends React.Component {
     event.preventDefault();
     event.target.reset();
     API.signIn(this.state)
-      //.then(console.log) after console.log undefined
       .then(jso => {
-        // debugger
         this.props.signIn(jso.user, jso.token)
-        //this.context(jso.user, jso.token)
       })
       .catch(error => console.log(error.message))
   };
