@@ -8,7 +8,7 @@ import API from "../API.js"
 export default function ProjectsPage({logOut}) {
 
   const[projects, setProjects] = useState([])
-  // const[projectId, setProjectId] = useState(null)
+  const[projectId, setProjectId] = useState(null)
 
   useEffect(() => {
     API.getProjects()
@@ -38,11 +38,29 @@ export default function ProjectsPage({logOut}) {
       <PrimarySearchAppBar logOut={logOut} />
      Your Projects
      <Box>
-     <ListProjects projects={projects} handleClick={handleClick} removeProject={removeProject} myProject={myProject}/>
+     <ListProjects projects={projects} handleClick={handleClick} addProject={addProject} removeProject={removeProject} myProject={myProject}/>
      <div>
      { projectId && <DetailsProject projectId={projectId} />}
      </div>
      </Box>
+     <Box>
+
+     </Box>
+     <Box>
+
+     </Box>
+     <Box>
+
+     </Box>
+     <Box>
+       
+     </Box>
+     <div>
+
+     </div>
+    <div>
+      
+    </div>
     </>
   )
   

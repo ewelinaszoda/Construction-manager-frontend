@@ -7,7 +7,7 @@ const projectsURL = `${baseURL}/projects`
 const get = (url) => {
   const configurationObject = {
     headers: {
-      "Authorization": localStorage.token
+      "Authorization": `Bearer ${localStorage.token}`
     }
   }
   return fetch(url, configurationObject)
