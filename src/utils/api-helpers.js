@@ -27,10 +27,11 @@ export const post = (url, data) => {
   return fetch(url, configurationObject)
 
   // return {
-  //   id: 123,
-  //   user: 'Ewelina',
-  //   token: '123123123'
+  // id: 123,
+  //  user: 'Ewelina',
+  // token: '123123123'
   // }
+
 }
 
 export const validate = (token) => get(VALIDATE_URL, token).then(resp => resp.json()).catch(error => console.log(error.message))
