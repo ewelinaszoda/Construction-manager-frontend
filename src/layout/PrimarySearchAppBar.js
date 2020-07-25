@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar(props) {
+export default function PrimarySearchAppBar({logOut, updateUserSearch, userSearch}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -122,7 +122,10 @@ export default function PrimarySearchAppBar(props) {
         component={Link} to='/account'
         onClick={handleMenuClose}>My Account
       </MenuItem>
-      <MenuItem onClick={() => {props.logOut(); handleMenuClose()}}>Log out</MenuItem>
+      <MenuItem 
+      onClick={() => {logOut(); handleMenuClose()}}
+      component={Link} to='/'
+      >Log out</MenuItem>
     </Menu>
   );
 
@@ -150,7 +153,8 @@ export default function PrimarySearchAppBar(props) {
         color="inherit" 
         component={Link} to='/projects'
         >
-          <ApartmentIcon />
+          <ApartmentIcon 
+          />
         </IconButton>
         <p>My Projects</p>
       </MenuItem>
@@ -160,7 +164,7 @@ export default function PrimarySearchAppBar(props) {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-          
+          component={Link} to='/account'
         >
           <AccountCircle />
         </IconButton>
@@ -179,7 +183,9 @@ export default function PrimarySearchAppBar(props) {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search by Project…"
+              placeholder="Search Project by name…"
+              onChange={(e) => updateUserSearch(e)}
+              value={userSearch}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

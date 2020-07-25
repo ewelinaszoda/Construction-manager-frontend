@@ -1,11 +1,8 @@
 import React from "react";
 import 'fontsource-roboto';
 import API from "./API"
-import MainPages from './pages/MainPages';
+import AuthPages from './pages/AuthPages';
 import SignInSignUpPages from './pages/SignInSignUpPages';
-// import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
-// import ThreeDRotation from '@material-ui/icons/ThreeDRotation';
-
 
 export default class App extends React.Component {
 
@@ -17,8 +14,12 @@ export default class App extends React.Component {
   componentDidMount() {
     if (localStorage.token) {
       API.validate(localStorage.token)
-        .then(json => {
-          this.signIn(json.user, json.token)
+        .then(jso => {
+          if (jso.user) {
+            this.signIn(jso.user, jso.token)
+          } else {
+            console.log("Invalid token")
+          }
         })
     }
   }
@@ -44,29 +45,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    // debugger
 
     return (
       <div>
-         {this.state.user
-        ? <MainPages logOut={this.logOut} />
-        : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
-        {/* <MainPages logOut={this.logOut} /> */}
+        {this.state.user
+          ? <AuthPages logOut={this.logOut} user={this.state.user} />
+          : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} />}
       </div>
     )
   }
 }
-
-// export { SignContext };
-
-// render() {
-//   return (
-//     <SignContext.Provider signIn={this.signIn} signUp={this.signUp}>
-//        {this.state.user
-//       ? <MainPages logOut={this.logOut} />
-//       : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp}/>} 
-//       {/* <MainPages logOut={this.logOut} /> */}
-//     </SignContext.Provider>
-//   )
-// }
-// }

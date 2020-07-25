@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import API from "../API"
 // import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -22,7 +22,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="/">
         Construction Manager
       </Link>{' '}
       {new Date().getFullYear()}
@@ -36,8 +36,8 @@ const styles = theme => ({
     height: '100vh',
   },
   logo: {
-    height: '15%',
-    width: '15%',
+    height: '25%',
+    width: '25%',
   },
   image: {
     backgroundImage: 'url(https://shanetraylen.com/wp-content/uploads/2019/02/Fotolia_98303431_Subscription_Monthly_M-699x408.jpg)',
@@ -69,7 +69,6 @@ const styles = theme => ({
 
 class SignInPage extends React.Component {
 
-  static contextType = createContext();
 
   state = {
     email: "",
@@ -108,7 +107,7 @@ class SignInPage extends React.Component {
               <LockOutlinedIcon /> 
              </Avatar>  */}
             <Typography component="h1" variant="h5">
-              Sign in
+              Sign in to Construction Manager
           </Typography>
             <form className={classes.form} onSubmit={this.handleSubmit}>
               <TextField
@@ -151,11 +150,6 @@ class SignInPage extends React.Component {
                 Sign In
             </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                </Link>
-                </Grid>
                 <Grid item>
                   <Link href="/sign-up" variant="body2">
                     {"Don't have an account? Sign Up"}

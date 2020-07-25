@@ -1,67 +1,58 @@
-import React, {useState, useEffect} from 'react'
-import PrimarySearchAppBar from "../components/PrimarySearchAppBar.js"
+import React, { useState, useEffect } from 'react'
+import PrimarySearchAppBar from "../layout/PrimarySearchAppBar.js"
 import Box from '@material-ui/core/Box';
-import ListProjects from "../components/ListProjects.js"
-import DetailsProject from "../components/DetailsProject.js"
+import ProjectsList from "../components/ProjectsList.js"
+// import Project from "../components/Project.js"
 import API from "../API.js"
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
-export default function ProjectsPage({logOut}) {
 
-  const[projects, setProjects] = useState([])
-  const[projectId, setProjectId] = useState(null)
+export default function ProjectsPage({ logOut }) {
+
+  const [projects, setProjects] = useState([])
+  const [userSearch, setUserSearch] = useState("")
 
   useEffect(() => {
-    API.getProjects()
-    .then(projects => setProjects(projects.projects))
-    .catch(error => console.log(error.message))
+    API.getMyProjects()
+      .then(projects => {
+        setProjects(projects)
+      })
+      .catch(error => console.log(error.message))
   }, [])
 
-  const addProject = (project) => {
-    setProjects({projects: [...projects, project]})
+  const updateUserSearch = (e) => {
+    setUserSearch(e.target.value)
+  }
+
+  const filterProjects = () => {
+    return projects.filter(project => project.name.toUpperCase().includes(userSearch.toUpperCase()))
   }
 
   const removeProject = (id) => {
     setProjects(projects.filter(projectId => projectId !== id))
   }
 
-  const myProject = () => {
-    return projects.filter(project => projects.includes(project.id))
-  }
-
-  const handleClick = (id) => {
-    setProjectId({projectId: id})
-  }
-
   return (
     <>
       <Box height="1vh"></Box>
-      <PrimarySearchAppBar logOut={logOut} />
-     Your Projects
-     <Box>
-     <ListProjects projects={projects} handleClick={handleClick} addProject={addProject} removeProject={removeProject} myProject={myProject}/>
-     <div>
-     { projectId && <DetailsProject projectId={projectId} />}
-     </div>
-     </Box>
-     <Box>
-
-     </Box>
-     <Box>
-
-     </Box>
-     <Box>
-
-     </Box>
-     <Box>
-       
-     </Box>
-     <div>
-
-     </div>
-    <div>
-      
-    </div>
+      <PrimarySearchAppBar 
+      logOut={logOut} 
+      updateUserSearch={updateUserSearch}
+      userSearch={userSearch}
+      />
+      <>
+      <h1>Your Projects</h1>
+      <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
+        <Button variant="outlined" color="secondary">
+          ADD PROJECT
+      </Button>
+      </Link>
+      </>
+      <Box>
+        <ProjectsList projects={filterProjects()} removeProject={removeProject} />
+      </Box>
     </>
   )
-  
+
 }
