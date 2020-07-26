@@ -44,13 +44,35 @@ export default class App extends React.Component {
     localStorage.removeItem("token")
   }
 
+  // ASK ADAO 
+
+  // const handlePostAuth = (userInfo) => {
+  //   if (userInfo.error) {
+  //     alert(userInfo.error)
+  //   } else {
+  //     setUser(userInfo.user)
+  //     if (userInfo.jwt) localStorage.setItem('jwt', userInfo.jwt)
+  //   } 
+  // }
+
+  handlePostAuth = (userInfo) => {
+    // if (userInfo.error) {
+    //   alert(userInfo.error)
+    // } else {
+    //   this.setState({ user: userInfo })
+    //   if (userInfo.jwt) localStorage.setItem('jwt', userInfo.jwt)
+    // }
+  }
+
   render() {
 
     return (
       <div>
-        {this.state.user
-          ? <AuthPages logOut={this.logOut} user={this.state.user} />
-          : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} />}
+        {
+          this.state.user
+            ? <AuthPages logOut={this.logOut} user={this.state.user} handlePostAuth={this.handlePostAuth} />
+            : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} handlePostAuth={this.handlePostAuth} />
+        }
       </div>
     )
   }

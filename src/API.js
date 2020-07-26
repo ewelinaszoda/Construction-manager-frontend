@@ -65,6 +65,33 @@ const submitNewProject = (e, data, submitForm) => {
   submitForm()
 }
 
+const configurationObject = (request, key, data) => {
+
+  const object = {
+    method: request,
+    headers: {
+      "Authorization": `Bearer ${localStorage.token}`,
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({ key:  data })
+  };
+  return object
+}
+
+const updateAuth = (url) => {
+  return fetch(url, configurationObject())
+}
+
+const updateUserInfo = (userData, id) => {
+  return updateAuth(signUpURL + "/" + id, userData)
+    .then((resp) => resp.json())
+    .then((resp) => {
+      console.log(resp);
+      return resp;
+    })
+}
+
 const getProjectMeetings = () => {
   return get(baseURL + "/project-meetings")
     .then(resp => resp.json())
@@ -84,6 +111,7 @@ export default {
   signUp,
   getMyProjects,
   submitNewProject,
+  updateUserInfo,
   getProjectMeetings,
   getProjectNotes,
 }

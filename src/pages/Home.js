@@ -6,6 +6,7 @@ import GetCurrentDate from "../components/GetCurrentDate.js"
 import Box from '@material-ui/core/Box';
 // import API from "../API.js"
 import Footer from "../layout/Footer"
+import Calendar from "../containers/Calendar"
 
 const Home = (props) => {
 
@@ -39,9 +40,27 @@ const Home = (props) => {
       </Box>
       <GetCurrentDate />
       {/* <MeetingsNotesContainer meetings={meetings} notes={notes} /> */}
+      <>
+      <Calendar />
+      </>
       <Footer/>
+
     </div>
   )
 
 }
 export default Home
+
+
+
+<header>
+<div id="logo">
+  <span className="icon">date_range</span>
+  <span>
+    react<b>calendar</b>
+  </span>
+</div>
+</header>
+<main>
+<Calendar />
+</main>

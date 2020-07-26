@@ -129,7 +129,7 @@ class SignUpPage extends React.Component {
   }
 
   render() {
-// debugger
+    
     const { classes } = this.props;
     const redirectToSingInPage = this.state.redirectToSingInPage 
 

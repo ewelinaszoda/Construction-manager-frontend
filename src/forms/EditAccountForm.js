@@ -68,6 +68,8 @@ export default function EditProfile({ handlePostAuth, user }) {
     clearForm();
   };
 
+  
+
   const clearForm = () => {
     setName("")
     setSurname("")
@@ -75,7 +77,6 @@ export default function EditProfile({ handlePostAuth, user }) {
     setPassword("")
     setPhone_number("")
   }
-
 
   return (
     <Container component="main" maxWidth="xs">

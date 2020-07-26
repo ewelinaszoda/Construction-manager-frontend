@@ -83,13 +83,21 @@ class SignInPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    event.target.reset();
     API.signIn(this.state)
       .then(jso => {
         this.props.signIn(jso.user, jso.token)
       })
-      .catch(error => console.log(error.message))
+      .then(this.props.handlePostAuth)
+
+      this.clearForm();
   };
+
+  clearForm = () => {
+    this.setState({
+      email: "",
+      password: "",
+    })
+  }
 
   render() {
 
@@ -102,7 +110,7 @@ class SignInPage extends React.Component {
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
-          <img src={logo} alt="Logo" className={classes.logo} />
+            <img src={logo} alt="Logo" className={classes.logo} />
             {/* <Avatar className={classes.avatar}>
               <LockOutlinedIcon /> 
              </Avatar>  */}

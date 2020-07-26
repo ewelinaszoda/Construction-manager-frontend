@@ -1,9 +1,8 @@
 import React from "react"
-import { Link } from 'react-router-dom';
 import PrimarySearchAppBar from "../layout/PrimarySearchAppBar"
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box'
 import Footer from "../layout/Footer"
+import Account from "../components/Account"
 
 const AccountPage = ({ user, logOut}) => {
 
@@ -13,7 +12,8 @@ const AccountPage = ({ user, logOut}) => {
       <Box height="1vh"></Box>
       <PrimarySearchAppBar logOut={logOut} />
       <br></br>
-      <div>
+      <Account user={user}/>
+      {/* <div>
         User Details
         <br></br>
         <br></br>
@@ -26,8 +26,8 @@ const AccountPage = ({ user, logOut}) => {
           EDIT USER
       </Button>
       </Link>
+      </div> */}
       <Footer/>
-      </div>
       </>
     );
   };

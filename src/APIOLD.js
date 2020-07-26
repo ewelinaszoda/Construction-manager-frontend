@@ -1,5 +1,5 @@
 const baseURL = "http://localhost:3000"
-const usersURL = `${baseURL}/users`
+const signUpURL = `${baseURL}/users`
 const signInURL = `${baseURL}/sign-in`
 const validateURL = `${baseURL}/validate`
 const projectsURL = `${baseURL}/projects`
@@ -11,11 +11,21 @@ const get = (url) => {
     }
   }
   return fetch(url, configurationObject)
-  .then(resp => resp.json())
-  .catch(error => console.log(error.message))
 }
 
-const postAuth = (url, data) => {
+const post = (url, data) => {
+  const configurationObject = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(data)
+  };
+  return fetch(url, configurationObject)
+}
+
+const postProject = (url, data) => {
   const configurationObject = {
     method: "POST",
     headers: {
@@ -26,36 +36,22 @@ const postAuth = (url, data) => {
     body: JSON.stringify(data)
   };
   return fetch(url, configurationObject)
-  .then(resp => resp.json())
-  .catch(error => console.log(error.message))
-
 }
 
-const updateAuth = (url, data) => {
-const configurationObject = {
-  method: "PATCH",
-  headers: {
-    "Authorization": `Bearer ${localStorage.token}`,
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  },
-body: JSON.stringify(data)
+const signIn = (data) => post(signInURL, data).then(resp => resp.json()).catch(error => console.log(error.message))
+
+const validate = (token) => get(validateURL, token).then(resp => resp.json()).catch(error => console.log(error.message))
+
+const signUp = (userData) => {
+  return fetch(signUpURL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ user: userData }),
+  })
 };
-  return fetch(url, configurationObject)
-  .then(resp => resp.json())
-  .catch(error => console.log(error.message))
-}
-
-const updateUserInfo = (data, id) => {
-  updateAuth(usersURL +"/" + id, data)
-  .then(resp => resp.json())
-  .catch(error => console.log(error))
-}
-const signIn = (data) => postAuth(signInURL, data)
-
-const validate = (token) => get(validateURL, token)
-
-const signUp = (data) => postAuth(usersURL, data)
 
 const getMyProjects = () => {
   return get(baseURL + "/my-projects")
@@ -65,8 +61,44 @@ const getMyProjects = () => {
 
 const submitNewProject = (e, data, submitForm) => {
   e.preventDefault()
-  postAuth(projectsURL, data)
+  postProject(projectsURL, data)
   submitForm()
+}
+
+const authorizedFetch = (url, options = {}) => {
+  return fetch(url, {
+    method: options.method,
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${localStorage.token}}`,
+    },
+    body: options.body,
+  })
+}
+
+const configurationObject = (request, key, data) => {
+
+  const object = {
+    method: request,
+    headers: {
+      "Authorization": `Bearer ${localStorage.token}`,
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({ [key]: data })
+  };
+  return object
+}
+
+
+const updateUserInfo = (userData, id) => {
+  const object = configurationObject("PATCH", "user", userData)
+  return authorizedFetch(signUpURL + "/" + id, object)
+    .then((resp) => resp.json())
+    .then((resp) => {
+      console.log(resp);
+      return resp;
+    })
 }
 
 const getProjectMeetings = () => {
@@ -81,15 +113,14 @@ const getProjectNotes = () => {
     .catch(error => console.log(error))
 }
 
-
 export default {
   get,
   signIn,
   validate,
   signUp,
-  updateUserInfo,
   getMyProjects,
   submitNewProject,
+  updateUserInfo,
   getProjectMeetings,
   getProjectNotes,
 }

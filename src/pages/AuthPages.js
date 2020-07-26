@@ -6,10 +6,11 @@ import {
 } from "react-router-dom";
 import AccountPage from "./AccountPage"
 import ProjectsPage from "./ProjectsPage"
-import NewProjectForm  from "../forms/NewProjectForm"
-import EditAccountForm  from "../forms/EditAccountForm"
+import NewProjectForm from "../forms/NewProjectForm"
+import EditAccountForm from "../forms/EditAccountForm"
 import Home from "./Home"
-import  { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+// import NotFound404 from '../components/NotFound404'
 
 const MainPages = (props) => {
 
@@ -17,22 +18,25 @@ const MainPages = (props) => {
     <Router>
       <Switch>
         <Route exact path="/home">
-          <Home logOut={props.logOut} user={props.user}/>
+          <Home logOut={props.logOut} user={props.user} />
         </Route>
         <Route exact path="/projects">
-          <ProjectsPage logOut={props.logOut} user={props.user}/>
+          <ProjectsPage logOut={props.logOut} user={props.user} />
         </Route>
         <Route exact path="/new-project-form">
-          <NewProjectForm logOut={props.logOut} user={props.user}/>
+          <NewProjectForm logOut={props.logOut} user={props.user} />
         </Route>
         <Route exact path="/account">
-          <AccountPage logOut={props.logOut} user={props.user}/>
+          <AccountPage logOut={props.logOut} user={props.user} />
         </Route>
         <Route exact path="/users/:userId/edit">
-          <EditAccountForm logOut={props.logOut} user={props.user}/>
+          <EditAccountForm logOut={props.logOut} user={props.user} handlePostAuth={props.handlePostAuth} />
         </Route>
+        {/* <Route path="*">
+          <NotFound404 />
+        </Route> */}
       </Switch>
-      <Redirect to="/home" />  
+      <Redirect to="/home" />
     </Router>
   )
 }
