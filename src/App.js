@@ -24,6 +24,29 @@ export default class App extends React.Component {
     }
   }
 
+
+  // handleUpdateUser = (e) => {
+  
+  //   e.preventDefault();
+  //   const userData = { name, surname, email, password, phone_number }
+  //   console.log(userData)
+  //   API.updateUserData(userData, user.id)
+  //   .then(resp => handleResp(resp, "You details has been changed!"))
+  //   // .then(resp => {
+  //   //   debugger
+  //   //   setName(resp.user.name)
+  //   //   setSurname(resp.user.surname)
+  //   //   setEmail(resp.user.email)
+  //   //   setPassword(resp.user.password)
+  //   //   setPhone_number(resp.user.phone_number)
+  //   // })
+  //   // .catch(err => console.error(err))
+  //   .then(clearForm())
+  //   .then(history.push('/account'))
+  //   };
+
+
+
   signUp = (user) => {
     this.setState({
       user: user
