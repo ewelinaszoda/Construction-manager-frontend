@@ -9,7 +9,10 @@ import API from "../API"
 import Calendar from "../components/Calendar"
 import Footer from "../layout/Footer"
 
-import MeetingsFromApi from "../containers/MeetingsFromApi"
+// import MeetingsFromApi from "../containers/MeetingsFromApi"
+import MeetingsContainer from "../containers/MeetingsContainer"
+// import MeetingsContainerFromAPI from "../containers/MeetingsContainerFromAPI"
+
 
 const Home = (props) => {
 
@@ -54,8 +57,8 @@ const Home = (props) => {
         <div className="calendar-container">
           <Calendar />
         </div>
-        {/* <MeetingsFromApi meetings={meetings} /> */}
-      {/* <MeetingsContainer meetings={meetings} /> */}
+        {/* <MeetingsContainerFromAPI meetings={meetings} />  */}
+      <MeetingsContainer meetings={meetings} />
       <Footer />
 
     </div>

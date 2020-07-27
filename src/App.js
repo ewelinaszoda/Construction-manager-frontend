@@ -9,7 +9,6 @@ export default class App extends React.Component {
   state = {
     user: null,
     projects: null,
-    errors: []
   }
 
   componentDidMount() {
