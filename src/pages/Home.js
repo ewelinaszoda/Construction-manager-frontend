@@ -1,25 +1,28 @@
-import React from 'react'
-// import React, { useState, useEffect } from 'react'
+// import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PrimarySearchAppBar from "../layout/PrimarySearchAppBar.js"
 import GetCurrentDate from "../components/GetCurrentDate.js"
-// import MeetingsNotesContainer from "../containers/MeetingsNotesContainer.js"
+// import MeetingsContainer from "../containers/MeetingsContainer"
 import Box from '@material-ui/core/Box';
-// import API from "../API.js"
+import API from "../API"
+// import Weather from "../components/Weather"
+import Calendar from "../components/Calendar"
 import Footer from "../layout/Footer"
-import Calendar from "../containers/Calendar"
+
+import MeetingsFromApi from "../containers/MeetingsFromApi"
 
 const Home = (props) => {
 
-  // const [meetings, setMeetings] = useState([])
+  const [meetings, setMeetings] = useState([])
   // const [notes, setNotes]  = useState([]) 
 
-  // useEffect(() => {
-  //   API.getProjectMeetings()
-  //     .then(meetings => {
-  //       setMeetings(meetings)
-  //     })
-  //     .catch(error => console.log(error.message))
-  // }, [])
+  useEffect(() => {
+    API.getMyMeetings()
+      .then(meetings => {
+        setMeetings(meetings)
+      })
+      .catch(error => console.log(error.message))
+  }, [])
 
   // useEffect(() => {
   //   API.getMyNotes()
@@ -32,35 +35,31 @@ const Home = (props) => {
 
   return (
     <div>
-      <Box height="1vh"></Box>
       <PrimarySearchAppBar logOut={props.logOut} />
       <br></br>
       <Box>
         Hi {props.user.name}!
       </Box>
       <GetCurrentDate />
-      {/* <MeetingsNotesContainer meetings={meetings} notes={notes} /> */}
-      <>
-      <Calendar />
-      </>
-      <Footer/>
+      {/* <Weather /> */}
+
+      <div className="title-calendar">
+          <div className="logo-calendar">
+            <div className="icon">date_range</div>
+            <span>
+              My<b>calendar</b>
+            </span>
+          </div>
+        </div>
+        <div className="calendar-container">
+          <Calendar />
+        </div>
+        {/* <MeetingsFromApi meetings={meetings} /> */}
+      {/* <MeetingsContainer meetings={meetings} /> */}
+      <Footer />
 
     </div>
   )
 
 }
 export default Home
-
-
-
-<header>
-<div id="logo">
-  <span className="icon">date_range</span>
-  <span>
-    react<b>calendar</b>
-  </span>
-</div>
-</header>
-<main>
-<Calendar />
-</main>

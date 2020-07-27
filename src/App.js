@@ -9,6 +9,7 @@ export default class App extends React.Component {
   state = {
     user: null,
     projects: null,
+    errors: []
   }
 
   componentDidMount() {
@@ -44,9 +45,7 @@ export default class App extends React.Component {
     localStorage.removeItem("token")
   }
 
-  // ASK ADAO 
-
-  // const handlePostAuth = (userInfo) => {
+  // handlePostAuth = (userInfo) => {
   //   if (userInfo.error) {
   //     alert(userInfo.error)
   //   } else {
@@ -55,14 +54,15 @@ export default class App extends React.Component {
   //   } 
   // }
 
-  handlePostAuth = (userInfo) => {
-    // if (userInfo.error) {
-    //   alert(userInfo.error)
-    // } else {
-    //   this.setState({ user: userInfo })
-    //   if (userInfo.jwt) localStorage.setItem('jwt', userInfo.jwt)
-    // }
-  }
+  // handlePostAuth = (userInfo) => {
+  //   if (userInfo.error) {
+  //     alert(userInfo.error)
+  //   } else {
+  //     this.setState({uer: userInfo.user})
+  //     if (userInfo.jwt) localStorage.setItem('jwt', userInfo.jwt)
+  //   } 
+  // }
+
 
   render() {
 
@@ -70,8 +70,8 @@ export default class App extends React.Component {
       <div>
         {
           this.state.user
-            ? <AuthPages logOut={this.logOut} user={this.state.user} handlePostAuth={this.handlePostAuth} />
-            : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} handlePostAuth={this.handlePostAuth} />
+            ? <AuthPages logOut={this.logOut} user={this.state.user} />
+            : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} />
         }
       </div>
     )

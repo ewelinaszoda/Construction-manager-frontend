@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   
   logo: {
-    maxWidth: 90,
+    maxWidth: 75,
     marginLeft: 0,
     alignItems: 'left',
   },

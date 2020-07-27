@@ -35,19 +35,22 @@ export default function ProjectsPage({ logOut }) {
 
   return (
     <>
-      <Box height="1vh"></Box>
-      <PrimarySearchAppBar 
-      logOut={logOut} 
-      updateUserSearch={updateUserSearch}
-      userSearch={userSearch}
+      <PrimarySearchAppBar
+        logOut={logOut}
+        updateUserSearch={updateUserSearch}
+        userSearch={userSearch}
       />
       <>
-      <h1>Your Projects</h1>
-      <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
-        <Button variant="outlined" color="secondary">
-          ADD PROJECT
-      </Button>
-      </Link>
+      <div>
+        <h1>Your Projects</h1>
+        <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
+          <span>
+            <Button variant="outlined" color="secondary">
+              ADD PROJECT
+            </Button>
+          </span>
+        </Link>
+        </div>
       </>
       <Box>
         <ProjectsList projects={filterProjects()} removeProject={removeProject} />

@@ -1,6 +1,5 @@
 import React from "react"
 import PrimarySearchAppBar from "../layout/PrimarySearchAppBar"
-import Box from '@material-ui/core/Box'
 import Footer from "../layout/Footer"
 import Account from "../components/Account"
 
@@ -9,7 +8,6 @@ const AccountPage = ({ user, logOut}) => {
   const renderAccountInfo = () => {
     return (
       <>
-      <Box height="1vh"></Box>
       <PrimarySearchAppBar logOut={logOut} />
       <br></br>
       <Account user={user}/>

@@ -65,44 +65,51 @@ const submitNewProject = (e, data, submitForm) => {
   submitForm()
 }
 
-const configurationObject = (request, key, data) => {
-
-  const object = {
-    method: request,
+const deleteProject = (id) => {
+  const configObject = {
+    method: 'DELETE',
     headers: {
       "Authorization": `Bearer ${localStorage.token}`,
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
-    body: JSON.stringify({ key:  data })
+  }
+  return fetch(projectsURL+ "/" + id, configObject)
+  .then((res) => res.json())
+  .then((res) => {
+      console.log(res);
+    return res;
+  })
+}
+
+const updateUserData = (UserData, id) => {
+  const configObject = {
+    method: "PATCH",
+    headers: {
+      "Authorization": `Bearer ${localStorage.token}`,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({ user: UserData}),
   };
-  return object
-}
 
-const updateAuth = (url) => {
-  return fetch(url, configurationObject())
-}
-
-const updateUserInfo = (userData, id) => {
-  return updateAuth(signUpURL + "/" + id, userData)
+  return fetch(signUpURL + "/" + id, configObject)
     .then((resp) => resp.json())
-    .then((resp) => {
-      console.log(resp);
-      return resp;
-    })
+    .catch(error => console.log(error))
 }
 
-const getProjectMeetings = () => {
-  return get(baseURL + "/project-meetings")
+const getMyMeetings = () => {
+  // return get(baseURL + "/project-meetings")
+  return get(baseURL + "/my-meetings")
     .then(resp => resp.json())
     .catch(error => console.log(error))
 }
 
-const getProjectNotes = () => {
-  return get(baseURL + "/project-notes")
-    .then(resp => resp.json())
-    .catch(error => console.log(error))
-}
+// const getMyNotes = () => {
+//   return get(baseURL + "/project-notes")
+//     .then(resp => resp.json())
+//     .catch(error => console.log(error))
+// }
 
 export default {
   get,
@@ -111,7 +118,8 @@ export default {
   signUp,
   getMyProjects,
   submitNewProject,
-  updateUserInfo,
-  getProjectMeetings,
-  getProjectNotes,
+  deleteProject,
+  updateUserData,
+  getMyMeetings,
+  // getMyNotes,
 }
