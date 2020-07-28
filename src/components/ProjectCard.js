@@ -71,10 +71,9 @@ const ProjectCard = ({ project, removeProject }) => {
     )
   }
 
-  const handleDeleteProject = (e) => {
-    e.preventDefault();
+  const handleDeleteProject = () => {
     API.deleteProject(project.id)
-      .then(resp => resp())
+      .then(resp => resp.json())
       .catch(err => console.error(err))
   }
 

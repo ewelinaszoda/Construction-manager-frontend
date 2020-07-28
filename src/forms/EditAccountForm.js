@@ -34,14 +34,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EditProfile({ user }) {
+export default function EditProfile(props) {
   const classes = useStyles();
 
-  const [name, setName] = useState(user.name)
-  const [surname, setSurname] = useState(user.surname)
-  const [email, setEmail] = useState(user.email)
+  const [name, setName] = useState(props.user.name)
+  const [surname, setSurname] = useState(props.user.surname)
+  const [email, setEmail] = useState(props.user.email)
   const [password, setPassword] = useState("")
-  const [phone_number, setPhone_number] = useState(user.phone_number)
+  const [phone_number, setPhone_number] = useState(props.user.phone_number)
 
   let history = useHistory();
 
@@ -50,39 +50,26 @@ export default function EditProfile({ user }) {
     e.preventDefault();
     const userData = { name, surname, email, password, phone_number }
     console.log(userData)
-    API.updateUserData(userData, user.id)
-    // .then(resp => handleResp(resp, "You details has been changed!"))
-    .then(resp => {
-      debugger
-      setName(resp.user.name)
-      setSurname(resp.user.surname)
-      setEmail(resp.user.email)
-      setPassword(resp.user.password)
-      setPhone_number(resp.user.phone_number)
-    })
-    // .catch(err => console.error(err))
-    // .then(clearForm())
-    .then(history.push('/account'))
-    };
-
- 
-    const handleResp = (resp, message) => {
-      if (resp.error) {
-        alert(resp.error)
-      } else {
-        setName(resp.user.name) 
-        setSurname(resp.user.surname)
-        setEmail(resp.user.email)
-        setPassword(resp.user.password)
-        setPhone_number(resp.user.phone_number)
-        }
-        return alert(message)
-      } 
     
-    // useEffect(() => {
-    //   API.updateUserData(userData, user.id)
-    //     .then(resp => resp)
-    // })
+    API.updateUserData(userData, props.user.id)
+    // .then(resp => handleResp(resp, "You details has been changed!"))
+    // if (typeof updateState === 'function') {
+    //   console.log("update state is a function")
+    // } else {
+    //     console.log("update state is not a function")
+    //   }
+    .then(resp => 
+      // console.log(resp.user)
+      props.updateState(resp))
+    .then(history.push('/account'))
+  }
+
+    // const handleResp = (resp, message) => {
+    //   if (resp.error) {
+    //     alert(resp.error)
+    //   } else 
+    //     return alert(message)
+    //   } 
 
 
     const clearForm = () => {

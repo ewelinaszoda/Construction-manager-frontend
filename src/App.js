@@ -24,6 +24,12 @@ export default class App extends React.Component {
     }
   }
 
+  updateState = (data) => {
+    this.setState({
+      user: data
+    })
+   }
+
   signUp = (user) => {
     this.setState({
       user: user
@@ -62,14 +68,14 @@ export default class App extends React.Component {
   //   } 
   // }
 
-
   render() {
 
     return (
       <div>
+        
         {
           this.state.user
-            ? <AuthPages logOut={this.logOut} user={this.state.user} />
+            ? <AuthPages logOut={this.logOut} user={this.state.user} updateState={this.updateState}/>
             : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} />
         }
       </div>

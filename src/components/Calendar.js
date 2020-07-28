@@ -1,12 +1,16 @@
 import React from "react";
 import * as dateFns from "date-fns"
 import "./Calendar.css"
+import {Link} from 'react-router-dom';
+
+// import AddMeetingButton from './AddMeetingButton'
+// import AnotherComponent2 from "./AnotherComponent"
 
 class Calendar extends React.Component {
 
   state = {
     currentMonth: new Date(),
-    selectedDate: new Date()
+    selectedDate: new Date(),
   };
 
   renderHeader() {
@@ -72,8 +76,17 @@ class Calendar extends React.Component {
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
               }`}
             key={day}
-            onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
+
+          // onClick={() => 
+          //   this.onDateClick(dateFns.parse(cloneDay))
+          // }
           >
+            {/* <div>
+              {this.props.isEmptyState && <AddMeetingButton addMeeting={this.props.addMeeting} />}
+
+              {this.props.isAddMeetingState && <AnotherComponent2 />}
+            </div> */}
+
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
           </div>
@@ -110,10 +123,14 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="calendar">
-        {this.renderHeader()}
-        {this.renderDays()}
-        {this.renderCells()}
+      <div>
+      <Link to="/projects" style={{ textDecoration: 'none', color: 'inherit' }} >
+        <div className="calendar">
+          {this.renderHeader()}
+          {this.renderDays()}
+          {this.renderCells()}
+        </div>
+      </Link>
       </div>
     );
   }
