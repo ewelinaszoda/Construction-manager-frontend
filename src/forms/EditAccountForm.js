@@ -46,138 +46,138 @@ export default function EditProfile(props) {
   let history = useHistory();
 
   const handleUpdateUser = (e) => {
-  
+
     e.preventDefault();
     const userData = { name, surname, email, password, phone_number }
-    console.log(userData)
-    
+
     API.updateUserData(userData, props.user.id)
-    // .then(resp => handleResp(resp, "You details has been changed!"))
-    // if (typeof updateState === 'function') {
-    //   console.log("update state is a function")
-    // } else {
-    //     console.log("update state is not a function")
-    //   }
-    .then(resp => 
-      // console.log(resp.user)
-      props.updateState(resp))
-    .then(history.push('/account'))
+      // .then(resp => handleResp(resp, "You details has been changed!"))
+      // if (typeof updateState === 'function') {
+      //   console.log("update state is a function")
+      // } else {
+      //     console.log("update state is not a function")
+      //   }
+      .then(resp => {
+        console.log(resp);
+        props.updateState(resp.user);
+      })
+      .then(history.push('/account'))
   }
 
-    // const handleResp = (resp, message) => {
-    //   if (resp.error) {
-    //     alert(resp.error)
-    //   } else 
-    //     return alert(message)
-    //   } 
+  // const handleResp = (resp, message) => {
+  //   if (resp.error) {
+  //     alert(resp.error)
+  //   } else 
+  //     return alert(message)
+  //   } 
 
 
-    const clearForm = () => {
-      setName("")
-      setSurname("")
-      setEmail("")
-      setPassword("")
-      setPhone_number("")
-    }
+  // const clearForm = () => {
+  //   setName("")
+  //   setSurname("")
+  //   setEmail("")
+  //   setPassword("")
+  //   setPhone_number("")
+  // }
 
-    return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <AccountCircleIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Edit Account
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <AccountCircleIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Edit Account
         </Typography>
-          <form className={classes.form} noValidate onSubmit={handleUpdateUser}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="name"
-                  name="name"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="surname"
-                  autoComplete="lname"
-                  value={surname}
-                  onChange={(e) => setSurname(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="phone_number"
-                  label="Phone number"
-                  name="phone_number"
-                  autoComplete="phone number"
-                  value={phone_number}
-                  onChange={(e) => setPhone_number(e.target.value)}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Please confirm Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Grid>
+        <form className={classes.form} noValidate onSubmit={handleUpdateUser}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="name"
+                name="name"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              value="save changes"
-            >
-              Update Profile
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="surname"
+                autoComplete="lname"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="phone_number"
+                label="Phone number"
+                name="phone_number"
+                autoComplete="phone number"
+                value={phone_number}
+                onChange={(e) => setPhone_number(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Please confirm Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            value="save changes"
+          >
+            Update Profile
           </Button>
-            <Grid container justify="flex-end">
-            </Grid>
-          </form>
-        </div>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
-      </Container>
-    );
-  }
+          <Grid container justify="flex-end">
+          </Grid>
+        </form>
+      </div>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
+    </Container>
+  );
+}
 

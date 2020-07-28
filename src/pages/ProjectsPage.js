@@ -30,7 +30,7 @@ export default function ProjectsPage({ logOut }) {
   }
 
   const removeProject = (id) => {
-    setProjects(projects.filter(projectId => projectId !== id))
+    setProjects(projects.filter(project => project.id !== id));
   }
 
   return (
@@ -41,15 +41,15 @@ export default function ProjectsPage({ logOut }) {
         userSearch={userSearch}
       />
       <>
-      <div>
-        <h1>Your Projects</h1>
-        <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
-          <span>
-            <Button variant="outlined" color="secondary">
-              ADD PROJECT
+        <div>
+          <h1>Your Projects</h1>
+          <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
+            <span>
+              <Button variant="outlined" color="secondary">
+                ADD PROJECT
             </Button>
-          </span>
-        </Link>
+            </span>
+          </Link>
         </div>
       </>
       <Box>

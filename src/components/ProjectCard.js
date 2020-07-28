@@ -32,7 +32,7 @@ const ProjectCard = ({ project, removeProject }) => {
   // PROJECT.NOTES
 
   const handleClickMeetings = () => {
-    history.push('/meetings')
+    history.push("/projects/:projectId/meetings")
   }
 
   const handleClickNotes = () => {
@@ -72,6 +72,7 @@ const ProjectCard = ({ project, removeProject }) => {
   }
 
   const handleDeleteProject = () => {
+    removeProject(project.id);
     API.deleteProject(project.id)
       .then(resp => resp.json())
       .catch(err => console.error(err))
@@ -116,10 +117,10 @@ const ProjectCard = ({ project, removeProject }) => {
         <Button size="small" color="primary" onClick={handleClick}>
           SHOW CONTACTS
         </Button>
-        <Button size="small" color="primary" onClick={handleClickMeetings}>
+        <Button size="small" color="primary" onClick={handleClickMeetings} renderMeetings={renderMeetings}>
           SEE MEETINGS
         </Button>
-        <Button size="small" color="primary" onClick={handleClickNotes}>
+        <Button size="small" color="primary" onClick={handleClickNotes} renderNotes={renderNotes}>
           SEE NOTES
         </Button>
         <Button size="small" color="primary" onClick={handleDeleteProject}>

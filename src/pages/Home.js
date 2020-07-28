@@ -45,10 +45,10 @@ const Home = (props) => {
     setIsAddMeetingState(true)
   }
 
-  const triggerAddMeetingState = () => {
-    setIsEmptyState(false)
-    setIsAddMeetingState(true)
-  }
+  // const triggerAddMeetingState = () => {
+  //   setIsEmptyState(false)
+  //   setIsAddMeetingState(true)
+  // }
 
   return (
     <div>

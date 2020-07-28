@@ -29,21 +29,21 @@ const MainPages = (props) => {
           <NewProjectForm logOut={props.logOut} user={props.user} />
         </Route>
         <Route path="/projects/:projectId/meetings"
-        render={routeProps => (
-          <MeetingsContainer logOut={props.logOut} user={props.user} {...routeProps} />
-        )}
+          render={routeProps => (
+            <MeetingsContainer logOut={props.logOut} user={props.user} {...routeProps} />
+          )}
         >
         </Route>
 
-        <Route path="/projects/projectId/notes">
+        <Route path="/projects/:projectId/notes">
           <NotesContainer logOut={props.logOut} user={props.user} />
         </Route>
 
         <Route exact path="/account">
-          <AccountPage logOut={props.logOut} user={props.user} updateState={props.updateState} />
+          <AccountPage logOut={props.logOut} user={props.user} />
         </Route>
         <Route exact path="/users/:userId/edit">
-          <EditAccountForm logOut={props.logOut} user={props.user} />
+          <EditAccountForm logOut={props.logOut} user={props.user} updateState={props.updateState} />
         </Route>
         {/* <Route path="*">
           <NotFound404 />
