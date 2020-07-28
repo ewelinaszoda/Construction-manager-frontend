@@ -75,7 +75,7 @@ export default class App extends React.Component {
         
         {
           this.state.user
-            ? <AuthPages logOut={this.logOut} user={this.state.user} updateState={this.updateState}/>
+            ? <AuthPages logOut={this.logOut} user={this.state.user} projects={this.state.projects} updateState={this.updateState}/>
             : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} />
         }
       </div>

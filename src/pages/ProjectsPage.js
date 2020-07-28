@@ -6,12 +6,19 @@ import ProjectsList from "../components/ProjectsList"
 import API from "../API.js"
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import Typography from "../styles/Typography"
 
 
 export default function ProjectsPage({ logOut }) {
 
   const [projects, setProjects] = useState([])
   const [userSearch, setUserSearch] = useState("")
+
+
+  // selectd ptoject 
+  // conditional rendering 
+  // see all details 
+  // if selected project render that project.metting
 
   useEffect(() => {
     API.getMyProjects()
@@ -41,20 +48,22 @@ export default function ProjectsPage({ logOut }) {
         userSearch={userSearch}
       />
       <>
+      <br></br>
+      <br></br>
+      <Typography variant="h4" marked="center" align="center" component="h2">
+        YOUR PROJECTS
+      </Typography>
         <div>
-          <h1>Your Projects</h1>
           <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
-            <span>
               <Button variant="outlined" color="secondary">
                 ADD PROJECT
             </Button>
-            </span>
           </Link>
         </div>
-      </>
       <Box>
         <ProjectsList projects={filterProjects()} removeProject={removeProject} />
       </Box>
+      </>
     </>
   )
 

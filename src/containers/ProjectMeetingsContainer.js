@@ -1,9 +1,8 @@
 import React from "react"
 import Box from '@material-ui/core/Box';
-import Meeting from  "../components/Meeting.js"
+import Meeting from  "../components/Meeting"
 
-
-const MeetingsContainerFromAPI = ({ meetings }) => {
+const ProjectMeetingsContainer = ({ meetings }) => {
 
   const renderMeetingCard = () => {
     return meetings.map(meeting =>
@@ -18,6 +17,7 @@ const MeetingsContainerFromAPI = ({ meetings }) => {
     <div style={{ width: '100%' }}>
       <h3>MEETINGS</h3>
       <Box bgcolor="background.paper">
+
       <>
         {renderMeetingCard()}
       </>
@@ -26,4 +26,4 @@ const MeetingsContainerFromAPI = ({ meetings }) => {
   )
 
 }
-export default MeetingsContainerFromAPI;
+export default ProjectMeetingsContainer;

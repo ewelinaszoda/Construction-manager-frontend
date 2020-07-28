@@ -13,10 +13,11 @@ import ApartmentIcon from '@material-ui/icons/Apartment';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from "../images/logo.png";
 import Tooltip from '@material-ui/core/Tooltip';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+// import { Link, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-  
+
   logo: {
     maxWidth: 75,
     marginLeft: 0,
@@ -81,10 +82,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar({logOut, updateUserSearch, userSearch}) {
+export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSearch }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  // const location = useLocation()
+  // debugger
+  //location
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -107,7 +111,7 @@ export default function PrimarySearchAppBar({logOut, updateUserSearch, userSearc
   };
 
   const menuId = 'primary-search-account-menu';
-  
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -118,13 +122,13 @@ export default function PrimarySearchAppBar({logOut, updateUserSearch, userSearc
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem 
+      <MenuItem
         component={Link} to='/account'
         onClick={handleMenuClose}>My Account
       </MenuItem>
-      <MenuItem 
-      onClick={() => {logOut(); handleMenuClose()}}
-      component={Link} to='/'
+      <MenuItem
+        onClick={() => { logOut(); handleMenuClose() }}
+        component={Link} to='/'
       >Log out</MenuItem>
     </Menu>
   );
@@ -141,19 +145,19 @@ export default function PrimarySearchAppBar({logOut, updateUserSearch, userSearc
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton  color="inherit"
-         component={Link} to='/home'
+        <IconButton color="inherit"
+          component={Link} to='/home'
         >
           <HomeIcon />
         </IconButton>
         <p>Home</p>
       </MenuItem>
       <MenuItem>
-        <IconButton 
-        color="inherit" 
-        component={Link} to='/projects'
+        <IconButton
+          color="inherit"
+          component={Link} to='/projects'
         >
-          <ApartmentIcon 
+          <ApartmentIcon
           />
         </IconButton>
         <p>My Projects</p>
@@ -178,11 +182,13 @@ export default function PrimarySearchAppBar({logOut, updateUserSearch, userSearc
       <AppBar position="static" style={{ background: '#2E3B55' }}>
         <Toolbar>
           <img src={logo} alt="Logo" className={classes.logo} />
+          
+          {/* // const location = useLocation() */}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
+              <InputBase
               placeholder="Search Project by name…"
               onChange={(e) => updateUserSearch(e)}
               value={userSearch}
@@ -196,35 +202,35 @@ export default function PrimarySearchAppBar({logOut, updateUserSearch, userSearc
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Tooltip title="Home">
-              <IconButton  
-              color="inherit"
-              aria-label="Home"
-              component={Link} to='/home'
+              <IconButton
+                color="inherit"
+                aria-label="Home"
+                component={Link} to='/home'
               >
                 <HomeIcon />
               </IconButton>
-              </Tooltip>
-              <Tooltip title="My Projects">
-              <IconButton 
-            color="inherit"
-            aria-label="My Projects"
-            component={Link} to='/projects'
-            >
-                <ApartmentIcon/>
-            </IconButton>
+            </Tooltip>
+            <Tooltip title="My Projects">
+              <IconButton
+                color="inherit"
+                aria-label="My Projects"
+                component={Link} to='/projects'
+              >
+                <ApartmentIcon />
+              </IconButton>
             </Tooltip>
             <Tooltip title="Profile">
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-              label="Profile"
-            >
-              <AccountCircle />
-            </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+                label="Profile"
+              >
+                <AccountCircle />
+              </IconButton>
             </Tooltip>
           </div>
           <div className={classes.sectionMobile}>
