@@ -33,18 +33,18 @@ class SignUpPage extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-  
+
   handleCreate = (e) => {
     e.preventDefault();
     const { name, surname, email, password, phone_number } = this.state;
     const userData = { name, surname, email, password, phone_number };
     API.signUp(userData)
-    .then((res) => res.json())
-    .then((res) => {
-      localStorage.setItem("jwt", res.jwt);
-      return res;
-    })
-    this.setState({ redirectToSingInPage: true})
+      .then((res) => res.json())
+      .then((res) => {
+        localStorage.setItem("token", res.token);
+        return res;
+      })
+    this.setState({ redirectToSingInPage: true })
     // this.clearForm();
     // .then(this.redirectToSingInPage())
   };
@@ -58,23 +58,23 @@ class SignUpPage extends React.Component {
   }
 
   render() {
-    
-    const { classes } = this.props;
-    const redirectToSingInPage = this.state.redirectToSingInPage 
 
-    if ( redirectToSingInPage === true ) {
-      return <Redirect to= "/" />
+    const { classes } = this.props;
+    const redirectToSingInPage = this.state.redirectToSingInPage
+
+    if (redirectToSingInPage === true) {
+      return <Redirect to="/" />
     }
 
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-            <Avatar className={classes.avatar}
+          <Avatar className={classes.avatar}
             src={logo}
             alt="logo"
-            >
-             </Avatar> 
+          >
+          </Avatar>
           <Typography component="h1" variant="h5">
             Sign up to Construction Manager
         </Typography>
@@ -113,7 +113,7 @@ class SignUpPage extends React.Component {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Email"
                   name="email"
                   autoComplete="email"
                   value={this.state.email}
@@ -163,7 +163,7 @@ class SignUpPage extends React.Component {
                 className={classes.submit}
                 value="create user"
               >
-                Sign up 
+                Sign up
             </Button>
             </Link>
             <Grid container justify="flex-end">

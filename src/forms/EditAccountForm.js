@@ -52,12 +52,6 @@ export default function EditProfile(props) {
     console.log(userData)
     
     API.updateUserData(userData, props.user.id)
-    // .then(resp => handleResp(resp, "You details has been changed!"))
-    // if (typeof updateState === 'function') {
-    //   console.log("update state is a function")
-    // } else {
-    //     console.log("update state is not a function")
-    //   }
     .then(resp => {
       console.log(resp);
       props.updateState(resp.user);

@@ -7,8 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import { useHistory } from "react-router-dom";
 import API from '../API';
+import NewMeetingForm from "../forms/NewMeetingForm"
+import NewNoteForm from "../forms/NewNoteForm"
 
 const useStyles = makeStyles({
   root: {
@@ -20,11 +21,15 @@ const useStyles = makeStyles({
   }
 });
 
-const ProjectCard = ({ project, removeProject }) => {
+const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToProject }) => {
 
   const classes = useStyles();
 
   const [showDetails, setShowDetails] = useState(false)
+  const [addMeeting, setAddMeeting] = useState(false)
+  const [addNote, setAddNote] = useState(false)
+
+  // RENDER MEETINGS
 
   const renderMeetings = () => {
     return (
@@ -34,6 +39,8 @@ const ProjectCard = ({ project, removeProject }) => {
     )
   }
 
+  // RENDER NOTES
+
   const renderNotes = () => {
     return (
       <div>
@@ -42,33 +49,42 @@ const ProjectCard = ({ project, removeProject }) => {
     )
   }
 
-  // const renderNotes = (project) => {
-  //   project.notes.forEach((note) => { renderOneNote(note) })
-  // }
+  const renderOneNote = (note) => {
+    return (
+      <div>
+
+        <h5>{note.title}</h5>
+        <h5>{note.description}</h5>
+      </div>
+    )
+  }
 
   const renderOneMeeting = (meeting) => {
     return (
       <div>
-        <h2>MEETINGS</h2>
         <h5>{meeting.title}</h5>
         <h5>{meeting.date}</h5>
         <h5>{meeting.start_time}</h5>
-        <h5>{meeting.end_time}</h5>
+        {/* <h5>{meeting.end_time}</h5> */}
         <h5>{meeting.location}</h5>
         <h5>{meeting.description}</h5>
       </div>
     )
   }
 
-  const renderOneNote = (note) => {
+  // RENDER DETAILS 
+
+  const renderDetails = () => {
     return (
       <div>
-        <h2>NOTES</h2>
-        <h5>{note.title}</h5>
-        <h5>{note.description}</h5>
+        <h5>{project.project_manager}</h5>
+        <h5>{project.site_manager}</h5>
+        <h5>{project.project_manager}</h5>
       </div>
     )
   }
+
+  // HANDLERS FUNCTIONS
 
   const handleDeleteProject = () => {
     removeProject(project.id);
@@ -81,14 +97,13 @@ const ProjectCard = ({ project, removeProject }) => {
     setShowDetails(!showDetails)
   }
 
-  const renderDetails = () => {
-    return (
-      <div>
-        <h5>{project.project_manager}</h5>
-        <h5>{project.site_manager}</h5>
-        <h5>{project.project_manager}</h5>
-      </div>
-    )
+  const handleAddMeeting = () => {
+    setAddMeeting(!addMeeting)
+
+  }
+
+  const handleAddNote = () => {
+    setAddNote(!addNote)
   }
 
   return (
@@ -119,28 +134,45 @@ const ProjectCard = ({ project, removeProject }) => {
         <Button size="small" color="primary" onClick={handleDeleteProject}>
           DELETE PROJECT
         </Button>
-
       </CardActions>
       <CardActions>
         {showDetails
           ? <div>
             <>
-              <h3>Contacts</h3>
+              <h3>CONTACTS</h3>
               <>{renderDetails()}</>
+            </>
+            <>
+              <h3>MEETINGS</h3>
+              <Button variant="outlined" color="primary" onClick={handleAddMeeting} >
+                ADD MEETING
+              </Button>
+
+              {addMeeting
+
+                ? <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />
+                : null
+              }
+
               <>{renderMeetings()}</>
+            </>
+            <>
+              <h2>NOTES</h2>
+              <Button variant="outlined" color="primary" onClick={handleAddNote}>
+                ADD NOTE
+              </Button>
+              {addNote
+
+                ? <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
+                : null
+              }
+              {/* {addNote && <NewNoteForm project={project}  />} */}
               <>{renderNotes()}</>
             </>
           </div>
           : null
-          // ? renderDetails()
-          // ? renderMeetings()
-          // : null
         }
-        {/* <div>
-        jdekdkkd
-      </div> */}
       </CardActions>
-
     </Card>
   );
 }

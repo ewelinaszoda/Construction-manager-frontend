@@ -13,10 +13,10 @@ const SignInSignUpPages = (props) => {
     <Router>
       <Switch>
         <Route path="/sign-up">
-          <SignUpPage signUp={props.signUp} handlePostAuth={props.handlePostAuth}/>
+          <SignUpPage signUp={props.signUp} />
         </Route>
         <Route path="/">
-          <SignInPage signIn={props.signIn} handlePostAuth={props.handlePostAuth}/>
+          <SignInPage signIn={props.signIn} />
         </Route>
       </Switch>
     </Router>

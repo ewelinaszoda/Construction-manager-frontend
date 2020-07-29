@@ -181,7 +181,7 @@ export default function NewProjectForm() {
                 shrink: true,
               }}
             />
-            <button className="newCaseButton">Submit</button>
+            <button>Submit</button>
           </form>
         </div>
         :  <div>

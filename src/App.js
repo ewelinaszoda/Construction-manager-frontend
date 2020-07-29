@@ -28,7 +28,7 @@ export default class App extends React.Component {
     this.setState({
       user: data
     })
-   }
+  }
 
   signUp = (user) => {
     this.setState({
@@ -37,10 +37,10 @@ export default class App extends React.Component {
   }
 
   signIn = (user, token) => {
+    localStorage.token = token
     this.setState({
       user: user
     })
-    localStorage.token = token
   }
 
   logOut = () => {
@@ -50,32 +50,14 @@ export default class App extends React.Component {
     localStorage.removeItem("token")
   }
 
-  // handlePostAuth = (userInfo) => {
-  //   if (userInfo.error) {
-  //     alert(userInfo.error)
-  //   } else {
-  //     setUser(userInfo.user)
-  //     if (userInfo.jwt) localStorage.setItem('jwt', userInfo.jwt)
-  //   } 
-  // }
-
-  // handlePostAuth = (userInfo) => {
-  //   if (userInfo.error) {
-  //     alert(userInfo.error)
-  //   } else {
-  //     this.setState({uer: userInfo.user})
-  //     if (userInfo.jwt) localStorage.setItem('jwt', userInfo.jwt)
-  //   } 
-  // }
-
   render() {
 
     return (
       <div>
-        
+
         {
           this.state.user
-            ? <AuthPages logOut={this.logOut} user={this.state.user} projects={this.state.projects} updateState={this.updateState}/>
+            ? <AuthPages logOut={this.logOut} user={this.state.user} projects={this.state.projects} updateState={this.updateState} />
             : <SignInSignUpPages signIn={this.signIn} signUp={this.signUp} />
         }
       </div>

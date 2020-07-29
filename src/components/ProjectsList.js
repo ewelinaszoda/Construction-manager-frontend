@@ -2,7 +2,7 @@ import React from "react";
 import Box from '@material-ui/core/Box';
 import ProjectCard from './ProjectCard';
 
-export default function ProjectsList({ projects, removeProject }) {
+export default function ProjectsList({ projects, removeProject, addMeetingToProject, addNoteToProject}) {
 
   const renderProjectCard = () => {
 
@@ -11,6 +11,8 @@ export default function ProjectsList({ projects, removeProject }) {
         key={project.id}
         project={project}
         removeProject = {removeProject}
+        addMeetingToProject={addMeetingToProject}
+        addNoteToProject={addNoteToProject}
       />
     )
   }
@@ -21,6 +23,5 @@ export default function ProjectsList({ projects, removeProject }) {
         {renderProjectCard()}
       </>
     </Box>
-
   )
 }

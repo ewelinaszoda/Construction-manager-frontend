@@ -2,23 +2,15 @@ import React, { useState, useEffect } from 'react'
 import PrimarySearchAppBar from "../layout/PrimarySearchAppBar"
 import Box from '@material-ui/core/Box';
 import ProjectsList from "../components/ProjectsList"
-// import Project from "../components/Project.js"
 import API from "../API.js"
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Typography from "../styles/Typography"
 
-
 export default function ProjectsPage({ logOut }) {
 
   const [projects, setProjects] = useState([])
   const [userSearch, setUserSearch] = useState("")
-
-
-  // selectd ptoject 
-  // conditional rendering 
-  // see all details 
-  // if selected project render that project.metting
 
   useEffect(() => {
     API.getMyProjects()
@@ -27,6 +19,20 @@ export default function ProjectsPage({ logOut }) {
       })
       .catch(error => console.log(error.message))
   }, [])
+
+  const addMeetingToProject = (projectId, meetingObj) => {
+    const newProjects = [...projects];
+    const currentProject = newProjects.find(p => p.id === projectId);
+    currentProject.meetings = [...currentProject.meetings, meetingObj];
+    setProjects(newProjects)
+  }
+
+  const addNoteToProject = (projectId, noteObj) => {
+    const newProjects = [...projects];
+    const currentProject = newProjects.find(p => p.id === projectId);
+    currentProject.notes = [...currentProject.notes, noteObj];
+    setProjects(newProjects)
+  }
 
   const updateUserSearch = (e) => {
     setUserSearch(e.target.value)
@@ -48,23 +54,22 @@ export default function ProjectsPage({ logOut }) {
         userSearch={userSearch}
       />
       <>
-      <br></br>
-      <br></br>
-      <Typography variant="h4" marked="center" align="center" component="h2">
-        YOUR PROJECTS
+        <br></br>
+        <br></br>
+        <Typography variant="h4" marked="center" align="center" component="h2">
+          YOUR PROJECTS
       </Typography>
         <div>
           <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
-              <Button variant="outlined" color="secondary">
-                ADD PROJECT
+            <Button variant="outlined" color="secondary">
+              ADD PROJECT
             </Button>
           </Link>
         </div>
-      <Box>
-        <ProjectsList projects={filterProjects()} removeProject={removeProject} />
-      </Box>
+        <Box>
+          <ProjectsList projects={filterProjects()} removeProject={removeProject} addMeetingToProject={addMeetingToProject} addNoteToProject={addNoteToProject} />
+        </Box>
       </>
     </>
   )
-
 }

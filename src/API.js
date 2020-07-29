@@ -3,6 +3,8 @@ const signUpURL = `${baseURL}/users`
 const signInURL = `${baseURL}/sign-in`
 const validateURL = `${baseURL}/validate`
 const projectsURL = `${baseURL}/projects`
+const meetingsURL = `${baseURL}/meetings`
+const notesURL = `${baseURL}/notes`
 
 const get = (url) => {
   const configurationObject = {
@@ -105,11 +107,44 @@ const getMyMeetings = () => {
     .catch(error => console.log(error))
 }
 
-// const getMyNotes = () => {
-//   return get(baseURL + "/project-notes")
-//     .then(resp => resp.json())
-//     .catch(error => console.log(error))
-// }
+const postMeeting = (url, data) => {
+  const configurationObject = {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${localStorage.token}`,
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(data)
+  };
+  return fetch(url, configurationObject)
+}
+
+
+const submitNewMeeting = (e, data, submitForm) => {
+  e.preventDefault()
+  postMeeting(meetingsURL, data)
+  submitForm()
+}
+
+const postNote= (url, data) => {
+  const configurationObject = {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${localStorage.token}`,
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(data)
+  };
+  return fetch(url, configurationObject)
+}
+
+const submitNewNote = (e, data, submitForm) => {
+  e.preventDefault()
+  postNote(notesURL, data)
+  submitForm()
+}
 
 export default {
   get,
@@ -121,5 +156,7 @@ export default {
   deleteProject,
   updateUserData,
   getMyMeetings,
-  // getMyNotes,
+//////////////////////??????????????????????
+  submitNewMeeting,
+  submitNewNote,
 }
