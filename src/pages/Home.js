@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject.js"
+// import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject.js"
+import PrimarySearchAppBarWithSearchMeeting  from "../layout/PrimarySearchAppBarWithSearchMeeting.js"
 import GetCurrentDate from "../components/GetCurrentDate.js"
 import Box from '@material-ui/core/Box';
 import API from "../API"
@@ -11,6 +12,7 @@ import MeetingsContainer from "../containers/MeetingsContainer"
 const Home = (props) => {
 
   const [meetings, setMeetings] = useState([])
+  const [userSearch, setUserSearch] = useState("")
 
   useEffect(() => {
     API.getMyMeetings()
@@ -24,9 +26,22 @@ const Home = (props) => {
       })
   }, [])
 
+  const updateUserSearch = (e) => {
+    setUserSearch(e.target.value)
+  }
+
+  const filterMeetings = () => {
+    return meetings.filter(meeting => meeting.title.toUpperCase().includes(userSearch.toUpperCase()))
+  }
+
   return (
     <div>
-      <PrimarySearchAppBarWithoutSearchProject logOut={props.logOut} />
+      {/* <PrimarySearchAppBarWithoutSearchProject */}
+      <PrimarySearchAppBarWithSearchMeeting 
+      logOut={props.logOut} 
+      updateUserSearch={updateUserSearch}
+      userSearch={userSearch}
+      />
       <br></br>
       <Box>
       <GetCurrentDate />
@@ -46,7 +61,9 @@ const Home = (props) => {
         <br></br>
         <br></br>
       </div>
-      <MeetingsContainer meetings={meetings} />
+      <MeetingsContainer meetings={filterMeetings()}
+      // meetings={meetings} 
+      />
       <Footer />
     </div>
   )

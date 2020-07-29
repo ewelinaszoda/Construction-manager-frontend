@@ -25,10 +25,9 @@ const MainPages = (props) => {
         <Route exact path="/new-project-form">
           <NewProjectForm logOut={props.logOut} user={props.user} />
         </Route>
-        
-        <Route exact path="/new-project-form">
+        {/* <Route exact path="/new-project-form">
           <NewProjectForm logOut={props.logOut} user={props.user} />
-        </Route>
+        </Route> */}
         <Route exact path="/account">
           <AccountPage logOut={props.logOut} user={props.user} />
         </Route>
