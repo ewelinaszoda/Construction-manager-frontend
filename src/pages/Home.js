@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import PrimarySearchAppBar from "../layout/PrimarySearchAppBar.js"
+import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject.js"
 import GetCurrentDate from "../components/GetCurrentDate.js"
 import Box from '@material-ui/core/Box';
 import API from "../API"
@@ -26,18 +26,17 @@ const Home = (props) => {
 
   return (
     <div>
-      <PrimarySearchAppBar logOut={props.logOut} />
+      <PrimarySearchAppBarWithoutSearchProject logOut={props.logOut} />
       <br></br>
       <Box>
-        Hi {props.user.name}!
-      </Box>
       <GetCurrentDate />
+      </Box>
       {/* <Weather /> */}
       <div className="title-calendar">
         <div className="logo-calendar">
           <div className="icon">date_range</div>
           <span>
-            My<b>calendar</b>
+          {props.user.name}<b>Calendar</b>
           </span>
         </div>
       </div>
@@ -49,7 +48,6 @@ const Home = (props) => {
       </div>
       <MeetingsContainer meetings={meetings} />
       <Footer />
-
     </div>
   )
 

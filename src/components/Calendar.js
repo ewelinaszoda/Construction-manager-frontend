@@ -1,7 +1,7 @@
 import React from "react";
 import * as dateFns from "date-fns"
 import "./Calendar.css"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // import AddMeetingButton from './AddMeetingButton'
 // import AnotherComponent2 from "./AnotherComponent"
@@ -124,13 +124,13 @@ class Calendar extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/projects" style={{ textDecoration: 'none', color: 'inherit' }} >
+        {/* <Link to="/projects" style={{ textDecoration: 'none', color: 'inherit' }} > */}
           <div className="calendar">
             {this.renderHeader()}
             {this.renderDays()}
             {this.renderCells()}
           </div>
-        </Link>
+        {/* </Link> */}
       </div>
     );
   }

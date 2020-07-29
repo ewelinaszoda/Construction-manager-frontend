@@ -7,14 +7,9 @@ import {
 import AccountPage from "./AccountPage"
 import ProjectsPage from "./ProjectsPage"
 import NewProjectForm from "../forms/NewProjectForm"
-// import NewMeetingForm from "../forms/NewMeetingForm"
 import EditAccountForm from "../forms/EditAccountForm"
 import Home from "./Home"
 import { Redirect } from 'react-router-dom'
-// import NotFound404 from '../components/NotFound404'
-// import NotesContainer from "../containers/NotesContainer.js"
-// import MeetingsContainer from "../containers/MeetingsContainer";
-// import MeetingsPage from "../pages/MeetingsPage"
 
 const MainPages = (props) => {
 
@@ -34,20 +29,6 @@ const MainPages = (props) => {
         <Route exact path="/new-project-form">
           <NewProjectForm logOut={props.logOut} user={props.user} />
         </Route>
-        {/* <Route exact path="/new-meeting-form">
-          <NewMeetingForm logOut={props.logOut} user={props.user} />
-        </Route> */}
-        {/* <Route path="/projects/:projectId/meetings"
-          render={routeProps => (
-            <MeetingsPage logOut={props.logOut} user={props.user} {...routeProps} />
-          )}
-        >
-        </Route> */}
-{/* 
-        <Route path="/projects/:projectId/notes">
-          <NotesContainer logOut={props.logOut} user={props.user} />
-        </Route> */}
-
         <Route exact path="/account">
           <AccountPage logOut={props.logOut} user={props.user} />
         </Route>
