@@ -10,6 +10,7 @@ const Meeting = ({ meeting }) => {
   }
 
   return (
+  
     <div style={{ width: '100%' }}>
       <Box bgcolor="background.paper">
         <div>
@@ -19,6 +20,7 @@ const Meeting = ({ meeting }) => {
           {/* <h3>{meeting.end_time}</h3> */}
           <h3>LOCATION:{meeting.location}</h3>
           <h3>DESCRIPTION:{meeting.description}</h3>
+          {/* <h3>PROJECT:{meeting.project.name}</h3> */}
         </div>
         <br></br>
         <br></br>
