@@ -31,6 +31,15 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const [addMeeting, setAddMeeting] = useState(false)
   const [addNote, setAddNote] = useState(false)
 
+  // PARSE DATE
+
+  const parseDate = (date) => {
+    const parsedDate = date.split('T')[1].split(".")[0].split(":")
+    const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
+    return interpolatedDate
+  }
+
+
   // RENDER MEETINGS
 
   const renderMeetings = () => {
@@ -64,12 +73,12 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const renderOneMeeting = (meeting) => {
     return (
       <div>
-        <h5>{meeting.title}</h5>
-        <h5>{meeting.date}</h5>
-        <h5>{meeting.start_time}</h5>
+        <h5>Title: {meeting.title}</h5>
+        <h5>Date: {meeting.date}</h5>
+        <h5>Time: {parseDate(meeting.start_time)}</h5>
         {/* <h5>{meeting.end_time}</h5> */}
-        <h5>{meeting.location}</h5>
-        <h5>{meeting.description}</h5>
+        <h5>Location: {meeting.location}</h5>
+        <h5>Description: {meeting.description}</h5>
       </div>
     )
   }
@@ -79,9 +88,10 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const renderDetails = () => {
     return (
       <div>
-        <h5>{project.project_manager}</h5>
-        <h5>{project.site_manager}</h5>
-        <h5>{project.project_manager}</h5>
+        <h5>Client: {project.client}</h5>
+        <h5>Project Manager: {project.project_manager}</h5>
+        <h5>Site Manager: {project.site_manager}</h5>
+        <h5>Quantity Surveyor: {project.quantity_surveyor}</h5>
       </div>
     )
   }
@@ -124,6 +134,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
           <Typography variant="body2" color="textSecondary" component="p">
             {project.address}
           </Typography>
+          <br></br>
           <Typography variant="body2" color="textSecondary" component="p">
             {project.description}
           </Typography>

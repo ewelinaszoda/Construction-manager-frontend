@@ -48,7 +48,7 @@ export default function StickyFooter() {
       <Container>
       <Grid container spacing={2}>
         <Typography variant="h6" marked="left" gutterBottom style={{color: "grey"}}>
-           The app built by Ewelina Szoda
+           Made by Ewelina Szoda
           </Typography>
           <Grid
             container
