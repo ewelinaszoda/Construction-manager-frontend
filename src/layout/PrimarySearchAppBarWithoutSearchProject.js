@@ -180,7 +180,6 @@ export default function PrimarySearchAppBarWithoutSearchProject({ logOut }) {
   return (
     <div className={classes.grow}>
       <AppBar position="static" style={{ background: '#2E3B55' }}>
-
         <Toolbar>
           <img src={logo} alt="Logo" className={classes.logo} />
 

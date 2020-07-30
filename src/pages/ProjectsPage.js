@@ -61,12 +61,24 @@ export default function ProjectsPage({ logOut }) {
       </Typography>
         <div>
           <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
-            <Button variant="outlined" color="secondary">
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ marginLeft: '30px' }}
+            // style={{ color: ' #2987c7', margin: "30px"}} 
+            // style={{ color: '#6cbe45', margin: "30px"}} 
+            >
               ADD PROJECT
             </Button>
           </Link>
         </div>
-        <Box>
+        <br></br>
+        <Box
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto"
+          }}
+        >
           <ProjectsList projects={filterProjects()} removeProject={removeProject} addMeetingToProject={addMeetingToProject} addNoteToProject={addNoteToProject} />
         </Box>
       </>

@@ -54,7 +54,6 @@ export default class App extends React.Component {
 
     return (
       <div>
-
         {
           this.state.user
             ? <AuthPages logOut={this.logOut} user={this.state.user} projects={this.state.projects} updateState={this.updateState} />

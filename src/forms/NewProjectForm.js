@@ -513,35 +513,52 @@ export default function NewProjectForm() {
         </div>
 
 
-
-
-
-
         : <div>
           <PrimarySearchAppBarWithoutSearchProject />
-          <h5>Project has been added to your Collection! </h5>
-          <Link to='/projects' style={{ textDecoration: 'none' }}>
-            <Button
-              variant="contained"
-              //  color="secondary" 
-              style={{
-                backgroundColor: "#2E3B55",
-              }}
+          <br></br>
+          <br></br>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
 
-            >
+          >
+
+            <Typography variant="h5" component="h2">
+              Project has been added to your Collection!
+          </Typography>
+          </Box>
+          <br></br>
+          <br></br>
+          <br></br>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Link to='/projects' style={{ textDecoration: 'none' }}>
+              <Button variant="contained"
+                color="primary"
+                // style={{ colorBackground: ' #f7b54b' }}
+              >
+                {/* <Link to='/projects' style={{ textDecoration: 'none' }}>
+            <Button
+            variant="contained"
+            color="secondary"
+          > */}
 
               BACK TO MY PROJECT
-              <br></br>
-              <br></br>
+              </Button>
+            </Link>
+            <Link to='/home' style={{ textDecoration: 'none' }}>
+              <Button variant="contained"
+                color="secondary"
+                // style={{ colorBackground: '#6cbe45' }}
+              >
+                BACK TO HOME
             </Button>
-          </Link>
-          <Link to='/home' style={{ textDecoration: 'none' }}>
-            <Button variant="contained" 
-             color="primary"
-            >
-              BACK TO HOME
-            </Button>
-          </Link>
+            </Link>
+          </Box>
         </div>
 
 

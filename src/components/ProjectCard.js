@@ -14,6 +14,8 @@ import NewNoteForm from "../forms/NewNoteForm"
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    margin: "20px",
+    display: "inline-block",
   },
   media: {
     height: 0,
@@ -131,7 +133,9 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         <Button size="small" color="primary" onClick={handleClick}>
           SHOW DETAILS
         </Button>
-        <Button size="small" color="primary" onClick={handleDeleteProject}>
+        <Button size="small"
+          color="secondary"
+          onClick={handleDeleteProject}>
           DELETE PROJECT
         </Button>
       </CardActions>
@@ -139,12 +143,24 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         {showDetails
           ? <div>
             <>
-              <h3>CONTACTS</h3>
+              <Typography variant="h6" component="h3" align="center" style={{ color: '#243c8c' }}>
+                CONTACTS
+              </Typography>
+              <hr />
               <>{renderDetails()}</>
             </>
             <>
-              <h3>MEETINGS</h3>
-              <Button variant="outlined" color="primary" onClick={handleAddMeeting} >
+              <Typography variant="h6" component="h2" align="center" style={{ color: '#243c8c' }}>
+                MEETINGS
+              </Typography>
+              <hr />
+              <br></br>
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ marginLeft: '30px' }}
+                onClick={handleAddMeeting}
+              >
                 ADD MEETING
               </Button>
 
@@ -156,11 +172,22 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
               <>{renderMeetings()}</>
             </>
+            <br></br>
+            <br></br>
             <>
-              <h2>NOTES</h2>
-              <Button variant="outlined" color="primary" onClick={handleAddNote}>
+              <Typography variant="h5" component="h2" align="center" style={{ color: '#243c8c' }}>
+                NOTES
+              </Typography>
+              <hr />
+              <br></br>
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ marginLeft: '30px' }}
+                onClick={handleAddNote}>
                 ADD NOTE
               </Button>
+              
               {addNote
 
                 ? <NewNoteForm project={project} addNoteToProject={addNoteToProject} />

@@ -63,9 +63,12 @@ const NewMeetingForm = (props) => {
     <>
       {!formSubmitted ?
         <div>
-          <Typography component="h2" variant="h6">
-            Add a New Meeting
+          <br></br>
+          <br></br>
+          <Typography component="h3" variant="h6" align="center">
+           New Meeting Form
         </Typography>
+        <br></br>
           <form className={classes.container} noValidate
             onSubmit={(e) => {
               props.addMeetingToProject(props.project.id, {

@@ -1,6 +1,6 @@
 import React from "react"
-import Box from '@material-ui/core/Box';
-import Meeting from  "../components/Meeting"
+import Meeting from "../components/Meeting"
+import Typography from "../styles/Typography"
 
 const MeetingsContainer = ({ meetings }) => {
 
@@ -9,7 +9,7 @@ const MeetingsContainer = ({ meetings }) => {
       return meetings.map(meeting =>
         < Meeting
           key={meeting.id}
-          meeting={meeting}x
+          meeting={meeting} x
         />
       )
     }
@@ -17,14 +17,16 @@ const MeetingsContainer = ({ meetings }) => {
   }
 
   return (
-    <div style={{ width: '100%' }}>
-      <h3>MEETINGS</h3>
-      <Box bgcolor="background.paper">
-      <>
-        {renderMeetingCard()}
-      </>
-      </Box>
-    </div >
+    <>
+      <Typography variant="h4" marked="center" align="center" component="h2">
+        YOUR MEETINGS
+      </Typography>
+      <br></br>
+      <br></br>
+        <>
+          {renderMeetingCard()}
+        </>
+    </>
   )
 
 }
