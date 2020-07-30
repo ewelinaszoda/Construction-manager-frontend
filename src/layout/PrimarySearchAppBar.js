@@ -13,7 +13,7 @@ import ApartmentIcon from '@material-ui/icons/Apartment';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from "../images/logo.png";
 import Tooltip from '@material-ui/core/Tooltip';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import { Link, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -182,13 +182,13 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
       <AppBar position="static" style={{ background: '#2E3B55' }}>
         <Toolbar>
           <img src={logo} alt="Logo" className={classes.logo} />
-          
+
           {/* // const location = useLocation() */}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-              <InputBase
+            <InputBase
               placeholder="Search Project by name…"
               onChange={(e) => updateUserSearch(e)}
               value={userSearch}

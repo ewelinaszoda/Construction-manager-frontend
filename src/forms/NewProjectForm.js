@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import API from '../API'
+import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject"
@@ -7,7 +8,30 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import EmailIcon from '@material-ui/icons/Email';
+import SaveIcon from '@material-ui/icons/Save';
 
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Input from '@material-ui/core/Input';
+import Box from '@material-ui/core/Box';
+// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import FormControl from '@material-ui/core/FormControl';
+
+import logo from "../images/logo.png";
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="/">
+        Construction Manager
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -18,6 +42,23 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
     width: 200,
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
   },
 }));
 
@@ -63,31 +104,67 @@ export default function NewProjectForm() {
 
   return (
     <>
-      {!formSubmitted ?
-        <div>
-          <h5 >Add a New Project</h5>
-          <form className={classes.container} noValidate
-            onSubmit={(e) => API.submitNewProject(e, {
-              name,
-              address,
-              image,
-              description,
-              client,
-              project_manager,
-              site_manager,
-              quantity_surveyor,
-              start_date,
-              end_date,
-            }, submitForm)}>
-            <br></br>
-            <input
-              className="inputField"
-              type="text" name="Name"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)} />
-            <br></br>
-            <br></br>
-            <input
+      {!formSubmitted
+        ? <div>
+
+
+          <Container component="main" maxWidth="xs">
+            <CssBaseline />
+
+            <div className={classes.paper}>
+              <Avatar className={classes.avatar}
+                src={logo}
+                alt="logo"
+              >
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Add New Project
+        </Typography>
+              {/* <form className={classes.form} noValidate onSubmit={ handleCreateItem }> */}
+              {/* <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField onChange={ (e) => setName(e.target.value) }
+                value={name}
+                autoComplete="name"
+                name="Name"
+                variant="outlined"
+                required
+                fullWidth
+                id="Name"
+                label="Name"
+                autoFocus
+              />
+            </Grid> */}
+
+              <form className={classes.form} noValidate
+                onSubmit={(e) => API.submitNewProject(e, {
+                  name,
+                  address,
+                  image,
+                  description,
+                  client,
+                  project_manager,
+                  site_manager,
+                  quantity_surveyor,
+                  start_date,
+                  end_date,
+                }, submitForm)}>
+
+                <Grid item xs={12}>
+                  <TextField onChange={(e) => setName(e.target.value)}
+                    value={name}
+                    autoComplete="name"
+                    name="Name"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="Name"
+                    label="Name"
+                    autoFocus
+                  />
+                </Grid>
+
+                {/* <input
               type="file" name="file"
               placeholder="Upload an Image"
               onChange={uploadImage}
@@ -103,22 +180,181 @@ export default function NewProjectForm() {
               className="inputField"
               type="text" name="Address"
               placeholder="Address"
-              onChange={(e) => setAddress(e.target.value)} />
-            <br></br>
-            <br></br>
-            <textarea
+              onChange={(e) => setAddress(e.target.value)} 
+              /> */}
+                <Grid item xs={12}>
+                  <FormControl variant="outlined" className={classes.form}>
+                    <Input type="file"
+                      fullWidth
+                      margin="dense"
+                      disableUnderline
+                      name="file"
+                      placeholder="Upload an Image"
+                      onChange={uploadImage}
+                    />
+                    {/* <Button onClick={ uploadImage }
+                  variant="contained"
+                  color="secondary"
+                  className={classes.submit}
+                  >
+                  Confirm Upload Image File...
+                </Button> */}
+                  </FormControl>
+                </Grid>
+
+                <Grid item xs={12}>
+                  {loading ? (
+                    <h3>Loading...</h3>
+                  ) : (
+                      <img src={image} style={{ width: '250px' }} alt="" />
+                    )}
+                </Grid>
+
+
+
+                {/* <textarea
               className="inputField"
               type="text" name="Description"
               placeholder="Description"
               onChange={(e) => setDescription(e.target.value)} />
-            <br></br>
-            <br></br>
-            <h3>You can fill the inputs below by contact emails below to enjoy sending email to your co-workers with one click!</h3>
-            <input
+          */}
+
+
+
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="address"
+                    label="Address"
+                    // placeholder="Maximum 500 characters."
+                    name="Address"
+                    autoComplete="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </Grid>
+
+                <br></br>
+
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="description"
+                    label="Description"
+                    // placeholder="Maximum 500 characters."
+                    name="Description"
+                    autoComplete="description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </Grid>
+
+                <br></br>
+                <br></br>
+
+
+                <Typography component="h6" variant="h6">
+                  Contacts
+        </Typography>
+                <Grid container spacing={1} alignItems="flex-end" >
+                  <Grid item>
+                    <EmailIcon />
+                  </Grid>
+                  <Grid item>
+
+                    <TextField
+                      // variant="outlined"
+                      required
+                      fullWidth
+                      id="Client"
+                      label="Client"
+                      // placeholder="Maximum 500 characters."
+                      name="Client"
+                      autoComplete="Client"
+                      value={client}
+                      onChange={(e) => setClient(e.target.value)}
+                    />
+                  </Grid>
+                </Grid>
+                <br></br>
+
+
+                <Grid container spacing={1} alignItems="flex-end" >
+                  <Grid item>
+                    <EmailIcon />
+                  </Grid>
+                  <Grid item>
+
+                    <TextField
+                      // variant="outlined"
+                      required
+                      fullWidth
+                      id="Project_manager"
+                      label="Project Manager"
+                      // placeholder="Maximum 500 characters."
+                      name="Project_manager"
+                      autoComplete="Project_manager"
+                      value={project_manager}
+                      onChange={(e) => setProject_manager(e.target.value)}
+                    />
+                  </Grid>
+                </Grid>
+                <br></br>
+
+
+                <Grid container spacing={1} alignItems="flex-end" >
+                  <Grid item>
+                    <EmailIcon />
+                  </Grid>
+                  <Grid item>
+
+                    <TextField
+                      // variant="outlined"
+                      required
+                      fullWidth
+                      id="Site_manager"
+                      label="Site Manager"
+                      // placeholder="Maximum 500 characters."
+                      name="Site_manager"
+                      autoComplete="Site_manager"
+                      value={site_manager}
+                      onChange={(e) => setSite_manager(e.target.value)}
+                    />
+                  </Grid>
+                </Grid>
+                <br></br>
+
+
+                {/* <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="client"
+                    label="Client"
+                    // placeholder="Maximum 500 characters."
+                    name="Client"
+                    autoComplete="client"
+                    value={client}
+                    onChange={(e) => setClient(e.target.value)}
+                  />
+                </Grid> */}
+
+
+
+
+
+
+                {/* <input
               className="inputField"
               type="text" name="Client"
               placeholder="Client"
-              onChange={(e) => setClient(e.target.value)} />
+              onChange={(e) => setClient(e.target.value)}
+               />
             <br></br>
             <br></br>
             <input
@@ -135,28 +371,56 @@ export default function NewProjectForm() {
               onChange={(e) => setSite_manager(e.target.value)} />
             <br></br>
             <br></br>
-            {/* <input
-              className="inputField"
-              type="text" name="Quantity_surveyor"
-              placeholder="Quantity Surveyor"
-              onChange={(e) => setQuantity_surveyor(e.target.value)} /> */}
+            <div className={classes.margin}> */}
+                <Grid container spacing={1} alignItems="flex-end" >
+                  <Grid item>
+                    <EmailIcon />
+                  </Grid>
+                  <Grid item>
+
+                    <TextField
+                      // variant="outlined"
+                      required
+                      fullWidth
+                      id="quantity urveyor"
+                      label="Quantity surveyor"
+                      // placeholder="Maximum 500 characters."
+                      name="Quantity_surveyor"
+                      autoComplete="quantity_surveyor"
+                      value={quantity_surveyor}
+                      onChange={(e) => setQuantity_surveyor(e.target.value)}
+                    />
+                  </Grid>
+                </Grid>
+                <br></br>
+
+                <br></br>
+
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="date"
+                    name="date"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="datetime-local"
+                    label="Start date"
+                    autoFocus
+                    type="date"
+                    defaultValue={start_date}
+                    className={classes.textField}
+                    onChange={(e) => setStart_date(e.target.value)}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </Grid>
 
 
 
-<div className={classes.margin}>
-        <Grid container spacing={1} alignItems="flex-end">
-          <Grid item>
-            <EmailIcon />
-          </Grid>
-          <Grid item>
-            <TextField id="input-with-icon-grid" label="Quantity_surveyor" 
-              onChange={(e) => setQuantity_surveyor(e.target.value)} />
-          </Grid>
-        </Grid>
-      </div>
-            <br></br>
-            <br></br>
-            <TextField
+                {/* </div> */}
+
+                {/* <TextField
               id="date"
               label="Start date"
               type="date"
@@ -165,8 +429,38 @@ export default function NewProjectForm() {
               onChange={(e) => setStart_date(e.target.value)}
               InputLabelProps={{
                 shrink: true,
-              }}
-            />
+              }} */}
+
+                <br></br>
+
+
+
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="date"
+                    name="date"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="datetime-local"
+                    label="End date"
+                    autoFocus
+                    type="date"
+                    defaultValue={end_date}
+                    className={classes.textField}
+                    onChange={(e) => setEnd_date(e.target.value)}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                  />
+                </Grid>
+
+
+
+
+
+
+                {/* />
             <br></br>
             <br></br>
             <br></br>
@@ -174,31 +468,95 @@ export default function NewProjectForm() {
               id="date"
               label="End date"
               type="date"
-              defaultValue = {end_date}
+              defaultValue={end_date}
               className={classes.textField}
               onChange={(e) => setEnd_date(e.target.value)}
               InputLabelProps={{
                 shrink: true,
               }}
-            />
-            <button>Submit</button>
-          </form>
+            /> */}
+
+
+                {/* <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  value="create user"
+                >
+                  Add Project
+                </Button> */}
+                <br></br>
+
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  className={classes.button}
+                  value="create project"
+                  startIcon={<SaveIcon />}
+                >
+                  Save
+                 </Button>
+
+              </form>
+            </div>
+
+
+            <Box mt={5}>
+              <Copyright />
+            </Box>
+          </Container>
         </div>
-        :  <div>
+
+
+
+
+
+
+        : <div>
           <PrimarySearchAppBarWithoutSearchProject />
           <h5>Project has been added to your Collection! </h5>
           <Link to='/projects' style={{ textDecoration: 'none' }}>
-            <Button variant="contained" color="secondary" >
+            <Button
+              variant="contained"
+              //  color="secondary" 
+              style={{
+                backgroundColor: "#2E3B55",
+              }}
+
+            >
+
               BACK TO MY PROJECT
-      </Button>
+              <br></br>
+              <br></br>
+            </Button>
           </Link>
           <Link to='/home' style={{ textDecoration: 'none' }}>
-            <Button variant="contained" color="primary" >
+            <Button variant="contained" 
+             color="primary"
+            >
               BACK TO HOME
-      </Button>
+            </Button>
           </Link>
         </div>
+
+
+
       }
     </>
   );
 }
+
+
+// style={{
+//   borderRadius: 35,
+//   backgroundColor: "#21b6ae",
+//   padding: "18px 36px",
+//   fontSize: "18px"
+// }}
+// variant="contained"
+// >

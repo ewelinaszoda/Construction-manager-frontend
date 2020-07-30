@@ -9,7 +9,8 @@ import TextField from '@material-ui/core/TextField';
 // import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 // import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
+import Typography from "../styles/Typography"
 // import { withStyles } from "@material-ui/core/styles";
 // import Container from '@material-ui/core/Container';
 // import { Redirect } from 'react-router'
@@ -62,34 +63,34 @@ const NewNoteForm = (props) => {
         </Typography>
           <form className={classes.container} noValidate
             onSubmit={(e) => {
-                props.addNoteToProject(props.project.id, {
-                  project_id: props.project.id,
-                  title,
-                  description,
-                });
-                API.submitNewNote(e, {
-                  project_id: props.project.id,
-                  title,
-                  description,
-                }, submitForm)
-                }} >
-              <Grid container spacing={2}>
+              props.addNoteToProject(props.project.id, {
+                project_id: props.project.id,
+                title,
+                description,
+              });
+              API.submitNewNote(e, {
+                project_id: props.project.id,
+                title,
+                description,
+              }, submitForm)
+            }} >
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="title"
-                  name="title"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="title"
-                  label="title"
-                  autoFocus
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
+                <Grid item xs={12}>
+                  <TextField
+                    autoComplete="title"
+                    name="title"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="title"
+                    label="title"
+                    autoFocus
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </Grid>
               </Grid>
-                 </Grid>
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
@@ -97,7 +98,7 @@ const NewNoteForm = (props) => {
                   fullWidth
                   id="description"
                   label="Description"
-                  placeholder = "Maximum 500 characters."
+                  placeholder="Maximum 500 characters."
                   name="description"
                   autoComplete="description"
                   value={description}
