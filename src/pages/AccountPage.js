@@ -1,6 +1,6 @@
 import React from "react"
 import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject"
-import Footer from "../layout/Footer"
+// import Footer from "../layout/Footer"
 import Account from "../components/Account"
 
 const AccountPage = ({ user, logOut}) => {
@@ -11,7 +11,7 @@ const AccountPage = ({ user, logOut}) => {
       <PrimarySearchAppBarWithoutSearchProject logOut={logOut} />
       <br></br>
       <Account user={user}/>
-      <Footer/>
+      {/* <Footer/> */}
       </>
     );
   };

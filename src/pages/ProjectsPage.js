@@ -6,6 +6,7 @@ import API from "../API.js"
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import Typography from "../styles/Typography"
+import Footer from "../layout/Footer"
 
 export default function ProjectsPage({ logOut }) {
 
@@ -82,6 +83,7 @@ export default function ProjectsPage({ logOut }) {
           <ProjectsList projects={filterProjects()} removeProject={removeProject} addMeetingToProject={addMeetingToProject} addNoteToProject={addNoteToProject} />
         </Box>
       </>
+      <Footer />
     </>
   )
 }

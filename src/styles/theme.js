@@ -51,7 +51,7 @@ const theme = {
     ...rawTheme.palette,
     background: {
       ...rawTheme.palette.background,
-      default: rawTheme.palette.common.white,
+      default: rawTheme.palette.common.grey,
       placeholder: grey[200],
     },
   },
