@@ -33,11 +33,11 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   // PARSE DATE
 
-  const parseDate = (date) => {
-    const parsedDate = date.split('T')[1].split(".")[0].split(":")
-    const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-    return interpolatedDate
-  }
+  // const parseDate = (date) => {
+  //   const parsedDate = date.split('T')[1].split(".")[0].split(":")
+  //   const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
+  //   return interpolatedDate
+  // }
 
 
   // RENDER MEETINGS
@@ -75,7 +75,8 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
       <div>
         <h5>Title: {meeting.title}</h5>
         <h5>Date: {meeting.date}</h5>
-        <h5>Time: {parseDate(meeting.start_time)}</h5>
+        <h5>Time: {meeting.start_time}</h5>
+        {/* <h5>Time: {parseDate(meeting.start_time)}</h5> */}
         {/* <h5>{meeting.end_time}</h5> */}
         <h5>Location: {meeting.location}</h5>
         <h5>Description: {meeting.description}</h5>

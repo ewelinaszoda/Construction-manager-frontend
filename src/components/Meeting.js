@@ -39,11 +39,11 @@ const Meeting = ({ meeting }) => {
     setShowDetails(!showDetails)
   }
 
-  const parseDate = (date) => {
-    const parsedDate = date.split('T')[1].split(".")[0].split(":")
-    const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-    return interpolatedDate
-  }
+  // const parseDate = (date) => {
+  //   const parsedDate = date.split('T')[1].split(".")[0].split(":")
+  //   const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
+  //   return interpolatedDate
+  // }
 
   return (
     <>
@@ -71,7 +71,8 @@ const Meeting = ({ meeting }) => {
                 </Typography>
                 <br></br>
               <Typography variant="h5" component="h2">
-                {bull}{meeting.date}{bull}{parseDate(meeting.start_time)}{bull}
+                {/* {bull}{meeting.date}{bull}{parseDate(meeting.start_time)}{bull} */}
+                {bull}{meeting.date}{bull}{meeting.start_time}{bull}
               </Typography>
               <br></br>
               <Typography className={classes.pos} color="textSecondary">
