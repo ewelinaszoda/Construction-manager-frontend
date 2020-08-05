@@ -33,11 +33,11 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   // PARSE DATE
 
-  // const parseDate = (date) => {
-  //   const parsedDate = date.split('T')[1].split(".")[0].split(":")
-  //   const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-  //   return interpolatedDate
-  // }
+  const parseDate = (date) => {
+    const parsedDate = date.split('T')[1].split(".")[0].split(":")
+    const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
+    return interpolatedDate
+  }
 
 
   // RENDER MEETINGS
