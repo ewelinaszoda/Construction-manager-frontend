@@ -31,15 +31,6 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const [addMeeting, setAddMeeting] = useState(false)
   const [addNote, setAddNote] = useState(false)
 
-  // PARSE DATE
-
-  const parseDate = (date) => {
-    const parsedDate = date.split('T')[1].split(".")[0].split(":")
-    const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-    return interpolatedDate
-  }
-
-
   // RENDER MEETINGS
 
   const renderMeetings = () => {
@@ -76,8 +67,6 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         <h5>Title: {meeting.title}</h5>
         <h5>Date: {meeting.date}</h5>
         <h5>Time: {meeting.start_time}</h5>
-        {/* <h5>Time: {parseDate(meeting.start_time)}</h5> */}
-        {/* <h5>{meeting.end_time}</h5> */}
         <h5>Location: {meeting.location}</h5>
         <h5>Description: {meeting.description}</h5>
       </div>
@@ -175,13 +164,10 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
               >
                 ADD MEETING
               </Button>
-
               {addMeeting
-
                 ? <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />
                 : null
               }
-
               <>{renderMeetings()}</>
             </>
             <br></br>
@@ -199,13 +185,10 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
                 onClick={handleAddNote}>
                 ADD NOTE
               </Button>
-              
               {addNote
-
                 ? <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
                 : null
               }
-              {/* {addNote && <NewNoteForm project={project}  />} */}
               <>{renderNotes()}</>
             </>
           </div>
@@ -218,42 +201,10 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
 export default ProjectCard
 
+// PARSE DATE
 
-// import React, { useState } from 'react'
-// // import Box from '@material-ui/core/Box';
-
-// const ProjectCard = ({ project, removeProject }) => {
-
-//   const [showDetails, setShowDetails] = useState(false)
-
-//   const handleClick = () => {
-//     setShowDetails(!showDetails)
-//   }
-
-//   const renderDetails = () => {
-//     return (
-//       <div>
-//         <h3>{project.address}</h3>
-//         <image scr={project.image} alt="image" />
-//         <h3>{project.description}</h3>
-//         <h3>{project.project_manager}</h3>
-//       </div>
-//     )
-//   }
-
-//   return (
-//     <div onClick={handleClick}>
-//       <h2>{project.name}</h2>
-//       <img alt="project" src={project.image} />
-//       {
-//         showDetails
-//           ? renderDetails()
-//           : null
-//       }
-//     </div>
-//   )
+// const parseDate = (date) => {
+// const parsedDate = date.split('T')[1].split(".")[0].split(":")
+// const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
+//   return interpolatedDate
 // }
-
-
-
-
