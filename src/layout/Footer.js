@@ -45,10 +45,15 @@ export default function StickyFooter() {
   return (
     <>
       <footer className={classes.footer}>
-      <Container>
+      <Container style={{marginLeft: '0px'}}>
       <Grid container spacing={2}>
-        <Typography variant="h6" marked="left" gutterBottom style={{color: "grey"}}>
-           Made by Ewelina Szoda
+        <Typography 
+        variant="h6" 
+        marked="left" 
+        gutterBottom 
+        style={{color: "grey"}}
+        >
+           Made by Evie Szoda
           </Typography>
           <Grid
             container
@@ -68,12 +73,10 @@ export default function StickyFooter() {
                 <LinkedInIcon/> LinkedIn
               </Link>
             </Grid>
-
           </Grid>
           </Grid>
           <Grid item xs={6}>
           <Box mt={5}>
-          {/* <Typography variant="body1">My sticky footer can be found here.</Typography> */}
           <Copyright />
           </Box>
           </Grid>
