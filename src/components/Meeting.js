@@ -39,12 +39,6 @@ const Meeting = ({ meeting }) => {
     setShowDetails(!showDetails)
   }
 
-  // const parseDate = (date) => {
-  //   const parsedDate = date.split('T')[1].split(".")[0].split(":")
-  //   const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-  //   return interpolatedDate
-  // }
-
   return (
     <>
       <Box bgcolor="background.paper"
@@ -71,7 +65,6 @@ const Meeting = ({ meeting }) => {
                 </Typography>
                 <br></br>
               <Typography variant="h5" component="h2">
-                {/* {bull}{meeting.date}{bull}{parseDate(meeting.start_time)}{bull} */}
                 {bull}{meeting.date}{bull}{meeting.start_time}{bull}
               </Typography>
               <br></br>
@@ -82,9 +75,6 @@ const Meeting = ({ meeting }) => {
                 {meeting.location}
                 </Typography>
                 <br></br>
-              {/* <Typography variant="body2" component="p">
-            well meaning and kindly.
-          </Typography> */}
             </CardContent>
             <CardActions>
               <Button size="small" className={classes.button} onClick={handleClick}>SHOW DESCRIPTION</Button>
@@ -101,7 +91,3 @@ const Meeting = ({ meeting }) => {
   )
 }
 export default Meeting;
-
-
-
-// style={{ color:"#6cbe45" }}

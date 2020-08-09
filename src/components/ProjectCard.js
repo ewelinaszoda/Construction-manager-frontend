@@ -101,7 +101,6 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   const handleAddMeeting = () => {
     setAddMeeting(!addMeeting)
-
   }
 
   const handleAddNote = () => {
