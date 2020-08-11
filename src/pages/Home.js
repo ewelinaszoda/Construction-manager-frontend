@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-// import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject.js"
-import PrimarySearchAppBarWithSearchMeeting from "../layout/PrimarySearchAppBarWithSearchMeeting.js"
+// import PrimarySearchAppBar from "../layout/PrimarySearchAppBar.js"
+import PrimarySearchAppBar from "../layout/PrimarySearchAppBar"
 import GetCurrentDate from "../components/GetCurrentDate.js"
 import Box from '@material-ui/core/Box';
 import API from "../API"
@@ -46,8 +46,7 @@ const Home = (props) => {
         height: '500px',
       }}
     >
-      {/* <PrimarySearchAppBarWithoutSearchProject */}
-      <PrimarySearchAppBarWithSearchMeeting
+      <PrimarySearchAppBar
         logOut={props.logOut}
         updateUserSearch={updateUserSearch}
         userSearch={userSearch}
@@ -56,7 +55,6 @@ const Home = (props) => {
       <Box>
         <GetCurrentDate />
       </Box>
-      {/* <Weather /> */}
       <br></br>
       <br></br>
       <br></br>
@@ -85,7 +83,7 @@ const Home = (props) => {
         <br></br>
       </div>
       <MeetingsContainer meetings={filterMeetings()}
-        // meetings={meetings} 
+      // meetings={meetings} 
       />
       <Footer />
     </div>
