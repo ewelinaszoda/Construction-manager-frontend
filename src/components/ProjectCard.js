@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import API from '../API';
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import API from '../API'
 import NewMeetingForm from "../forms/NewMeetingForm"
 import NewNoteForm from "../forms/NewNoteForm"
+import Collapse from '@material-ui/core/Collapse'
+// import clsx from 'clsx'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles ({
   root: {
     maxWidth: 345,
     margin: "20px",
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9,
-  }
+  }, 
 });
 
 const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToProject }) => {
@@ -53,17 +55,16 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   const renderOneNote = (note) => {
     return (
-      <div>
-
+      <div key={note.id}>
         <h5>{note.title}</h5>
         <h5>{note.description}</h5>
       </div>
     )
   }
 
-  const renderOneMeeting = (meeting) => {
+  const renderOneMeeting = (meeting) => { 
     return (
-      <div>
+      <div  key={meeting.id}>
         <h5>Title: {meeting.title}</h5>
         <h5>Date: {meeting.date}</h5>
         <h5>Time: {meeting.start_time}</h5>
@@ -77,7 +78,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   const renderDetails = () => {
     return (
-      <div>
+      <div key={project.id}>
         <h5>Client: {project.client}</h5>
         <h5>Project Manager: {project.project_manager}</h5>
         <h5>Site Manager: {project.site_manager}</h5>
@@ -130,7 +131,13 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={handleClick}>
+        <Button size="small" color="primary" onClick={handleClick}
+        //  className={clsx(classes.expand, {
+        //   [classes.expandOpen]: showDetails,
+        // })}
+        // aria-expanded={showDetails}
+        // aria-label="show more"
+        >
           SHOW DETAILS
         </Button>
         <Button size="small"
@@ -139,7 +146,8 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
           DELETE PROJECT
         </Button>
       </CardActions>
-      <CardActions>
+      <Collapse in={showDetails} timeout="auto" unmountOnExit>
+      <CardContent>
         {showDetails
           ? <div>
             <>
@@ -193,7 +201,8 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
           </div>
           : null
         }
-      </CardActions>
+      </CardContent>
+      </Collapse>
     </Card>
   );
 }
@@ -207,3 +216,5 @@ export default ProjectCard
 // const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
 //   return interpolatedDate
 // }
+
+//njnjn

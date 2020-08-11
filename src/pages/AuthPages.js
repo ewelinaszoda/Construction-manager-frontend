@@ -25,18 +25,12 @@ const MainPages = (props) => {
         <Route exact path="/new-project-form">
           <NewProjectForm logOut={props.logOut} user={props.user} />
         </Route>
-        {/* <Route exact path="/new-project-form">
-          <NewProjectForm logOut={props.logOut} user={props.user} />
-        </Route> */}
         <Route exact path="/account">
           <AccountPage logOut={props.logOut} user={props.user} />
         </Route>
         <Route exact path="/users/:userId/edit">
           <EditAccountForm logOut={props.logOut} user={props.user} updateState={props.updateState} />
         </Route>
-        {/* <Route path="*">
-          <NotFound404 />
-        </Route> */}
       </Switch>
       <Redirect to="/home" />
     </Router>
