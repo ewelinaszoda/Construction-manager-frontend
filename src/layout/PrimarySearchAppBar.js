@@ -12,8 +12,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from "../images/logo.png";
-// import Tooltip from '@material-ui/core/Tooltip';
-// import { Link} from 'react-router-dom';
+import Tooltip from '@material-ui/core/Tooltip';
 import { Link, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -213,7 +212,6 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
           />
         </>
       )
-
     else
       return (
         <InputBase
@@ -221,7 +219,6 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
         />
 
       )
-
   }
 
   return (
@@ -234,37 +231,37 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <Tooltip title="Home"> */}
-            <IconButton
-              color="inherit"
-              aria-label="Home"
-              component={Link} to='/home'
-            >
-              <HomeIcon />
-            </IconButton>
-            {/* </Tooltip> */}
-            {/* <Tooltip title="My Projects"> */}
-            <IconButton
-              color="inherit"
-              aria-label="My Projects"
-              component={Link} to='/projects'
-            >
-              <ApartmentIcon />
-            </IconButton>
-            {/* </Tooltip> */}
-            {/* <Tooltip title="Profile"> */}
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-              label="Profile"
-            >
-              <AccountCircle />
-            </IconButton>
-            {/* </Tooltip> */}
+            <Tooltip title="Home">
+              <IconButton
+                color="inherit"
+                aria-label="Home"
+                component={Link} to='/home'
+              >
+                <HomeIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="My Projects">
+              <IconButton
+                color="inherit"
+                aria-label="My Projects"
+                component={Link} to='/projects'
+              >
+                <ApartmentIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Profile">
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+                label="Profile"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Tooltip>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

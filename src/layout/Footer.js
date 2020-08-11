@@ -6,6 +6,7 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import Box from '@material-ui/core/Box';
 
 function Copyright() {
@@ -32,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   footer: {
+    margin: 'auto auto 0 auto',
     padding: theme.spacing(3, 2),
-    marginTop: 'auto',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
   },
@@ -54,6 +55,8 @@ export default function StickyFooter() {
         style={{color: "grey"}}
         >
            Made by Evie Szoda
+           <br></br>
+           <br></br>
           </Typography>
           <Grid
             container
@@ -67,10 +70,14 @@ export default function StickyFooter() {
                 <GitHubIcon /> GitHub
               </Link>
             </Grid>
-
             <Grid item className={classes.icons}>
               <Link style={{color: "grey"}} href="https://www.linkedin.com/in/ewelina-szoda-a99000a4/" target="_blank" >
                 <LinkedInIcon/> LinkedIn
+              </Link>
+            </Grid>
+            <Grid item className={classes.icons}>
+              <Link style={{color: "grey"}} href="https://www.linkedin.com/in/ewelina-szoda-a99000a4/" target="_blank" >
+                <TwitterIcon/> Twitter
               </Link>
             </Grid>
           </Grid>
