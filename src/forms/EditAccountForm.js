@@ -58,25 +58,6 @@ export default function EditProfile(props) {
     })
     .then(history.push('/account'))
   }
-
-    // const handleResp = (resp, message) => {
-    //   if (resp.error) {
-    //     alert(resp.error)
-    //   } else 
-    //     return alert(message)
-    //   } 
-
-
-    // const clearForm = () => {
-    //   setName("")
-    //   setSurname("")
-    //   setEmail("")
-    //   setPassword("")
-    //   setPhone_number("")
-    // }
-
-
-
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -177,4 +158,3 @@ export default function EditProfile(props) {
       </Container>
     );
   }
-

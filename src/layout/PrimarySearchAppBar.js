@@ -86,7 +86,6 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const location = useLocation()
-  // debugger
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);

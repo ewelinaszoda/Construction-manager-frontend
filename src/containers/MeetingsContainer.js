@@ -9,7 +9,7 @@ const MeetingsContainer = ({ meetings }) => {
       return meetings.map(meeting =>
         < Meeting
           key={meeting.id}
-          meeting={meeting} x
+          meeting={meeting} 
         />
       )
     }

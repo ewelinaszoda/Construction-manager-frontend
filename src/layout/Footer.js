@@ -76,7 +76,7 @@ export default function StickyFooter() {
               </Link>
             </Grid>
             <Grid item className={classes.icons}>
-              <Link style={{color: "grey"}} href="https://www.linkedin.com/in/ewelina-szoda-a99000a4/" target="_blank" >
+              <Link style={{color: "grey"}} href="https://twitter.com/EvieSzoda" target="_blank" >
                 <TwitterIcon/> Twitter
               </Link>
             </Grid>

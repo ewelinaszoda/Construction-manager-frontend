@@ -1,4 +1,5 @@
 const baseURL = "http://localhost:3000"
+
 const signUpURL = `${baseURL}/users`
 const signInURL = `${baseURL}/sign-in`
 const validateURL = `${baseURL}/validate`
@@ -156,7 +157,6 @@ export default {
   deleteProject,
   updateUserData,
   getMyMeetings,
-//////////////////////??????????????????????
   submitNewMeeting,
   submitNewNote,
 }
