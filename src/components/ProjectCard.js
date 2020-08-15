@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import API from '../API';
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import API from '../API'
 import NewMeetingForm from "../forms/NewMeetingForm"
 import NewNoteForm from "../forms/NewNoteForm"
+import Collapse from '@material-ui/core/Collapse'
+// import clsx from 'clsx'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles ({
   root: {
     maxWidth: 345,
     margin: "20px",
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9,
-  }
+  }, 
 });
 
 const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToProject }) => {
@@ -30,15 +32,6 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const [showDetails, setShowDetails] = useState(false)
   const [addMeeting, setAddMeeting] = useState(false)
   const [addNote, setAddNote] = useState(false)
-
-  // PARSE DATE
-
-  const parseDate = (date) => {
-    const parsedDate = date.split('T')[1].split(".")[0].split(":")
-    const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-    return interpolatedDate
-  }
-
 
   // RENDER MEETINGS
 
@@ -62,22 +55,19 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   const renderOneNote = (note) => {
     return (
-      <div>
-
+      <div key={note.id}>
         <h5>{note.title}</h5>
         <h5>{note.description}</h5>
       </div>
     )
   }
 
-  const renderOneMeeting = (meeting) => {
+  const renderOneMeeting = (meeting) => { 
     return (
-      <div>
+      <div  key={meeting.id}>
         <h5>Title: {meeting.title}</h5>
         <h5>Date: {meeting.date}</h5>
         <h5>Time: {meeting.start_time}</h5>
-        {/* <h5>Time: {parseDate(meeting.start_time)}</h5> */}
-        {/* <h5>{meeting.end_time}</h5> */}
         <h5>Location: {meeting.location}</h5>
         <h5>Description: {meeting.description}</h5>
       </div>
@@ -88,7 +78,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   const renderDetails = () => {
     return (
-      <div>
+      <div key={project.id}>
         <h5>Client: {project.client}</h5>
         <h5>Project Manager: {project.project_manager}</h5>
         <h5>Site Manager: {project.site_manager}</h5>
@@ -112,7 +102,6 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 
   const handleAddMeeting = () => {
     setAddMeeting(!addMeeting)
-
   }
 
   const handleAddNote = () => {
@@ -142,7 +131,13 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={handleClick}>
+        <Button size="small" color="primary" onClick={handleClick}
+        //  className={clsx(classes.expand, {
+        //   [classes.expandOpen]: showDetails,
+        // })}
+        // aria-expanded={showDetails}
+        // aria-label="show more"
+        >
           SHOW DETAILS
         </Button>
         <Button size="small"
@@ -151,7 +146,8 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
           DELETE PROJECT
         </Button>
       </CardActions>
-      <CardActions>
+      <Collapse in={showDetails} timeout="auto" unmountOnExit>
+      <CardContent>
         {showDetails
           ? <div>
             <>
@@ -175,13 +171,10 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
               >
                 ADD MEETING
               </Button>
-
               {addMeeting
-
                 ? <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />
                 : null
               }
-
               <>{renderMeetings()}</>
             </>
             <br></br>
@@ -199,61 +192,29 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
                 onClick={handleAddNote}>
                 ADD NOTE
               </Button>
-              
               {addNote
-
                 ? <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
                 : null
               }
-              {/* {addNote && <NewNoteForm project={project}  />} */}
               <>{renderNotes()}</>
             </>
           </div>
           : null
         }
-      </CardActions>
+      </CardContent>
+      </Collapse>
     </Card>
   );
 }
 
 export default ProjectCard
 
+// PARSE DATE
 
-// import React, { useState } from 'react'
-// // import Box from '@material-ui/core/Box';
-
-// const ProjectCard = ({ project, removeProject }) => {
-
-//   const [showDetails, setShowDetails] = useState(false)
-
-//   const handleClick = () => {
-//     setShowDetails(!showDetails)
-//   }
-
-//   const renderDetails = () => {
-//     return (
-//       <div>
-//         <h3>{project.address}</h3>
-//         <image scr={project.image} alt="image" />
-//         <h3>{project.description}</h3>
-//         <h3>{project.project_manager}</h3>
-//       </div>
-//     )
-//   }
-
-//   return (
-//     <div onClick={handleClick}>
-//       <h2>{project.name}</h2>
-//       <img alt="project" src={project.image} />
-//       {
-//         showDetails
-//           ? renderDetails()
-//           : null
-//       }
-//     </div>
-//   )
+// const parseDate = (date) => {
+// const parsedDate = date.split('T')[1].split(".")[0].split(":")
+// const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
+//   return interpolatedDate
 // }
 
-
-
-
+//njnjn

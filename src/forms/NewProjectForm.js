@@ -3,7 +3,7 @@ import API from '../API'
 import Avatar from '@material-ui/core/Avatar';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject"
+import PrimarySearchAppBar from "../layout/PrimarySearchAppBar"
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -514,7 +514,7 @@ export default function NewProjectForm() {
 
 
         : <div>
-          <PrimarySearchAppBarWithoutSearchProject />
+          <PrimarySearchAppBar />
           <br></br>
           <br></br>
           <Box
@@ -539,7 +539,7 @@ export default function NewProjectForm() {
             <Link to='/projects' style={{ textDecoration: 'none' }}>
               <Button variant="contained"
                 color="primary"
-                // style={{ colorBackground: ' #f7b54b' }}
+              // style={{ colorBackground: ' #f7b54b' }}
               >
                 {/* <Link to='/projects' style={{ textDecoration: 'none' }}>
             <Button
@@ -553,7 +553,7 @@ export default function NewProjectForm() {
             <Link to='/home' style={{ textDecoration: 'none' }}>
               <Button variant="contained"
                 color="secondary"
-                // style={{ colorBackground: '#6cbe45' }}
+              // style={{ colorBackground: '#6cbe45' }}
               >
                 BACK TO HOME
             </Button>

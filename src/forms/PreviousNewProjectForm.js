@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import API from '../API'
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import PrimarySearchAppBarWithoutSearchProject from "../layout/PrimarySearchAppBarWithoutSearchProject"
+import PrimarySearchAppBar from "../layout/PrimarySearchAppBar"
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -185,7 +185,7 @@ export default function NewProjectForm() {
           </form>
         </div>
         : <div>
-          <PrimarySearchAppBarWithoutSearchProject />
+          <PrimarySearchAppBar />
           <h5>Project has been added to your Collection! </h5>
           <Link to='/projects' style={{ textDecoration: 'none' }}>
             <Button variant="contained" color="secondary" >

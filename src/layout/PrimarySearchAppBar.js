@@ -13,8 +13,7 @@ import ApartmentIcon from '@material-ui/icons/Apartment';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from "../images/logo.png";
 import Tooltip from '@material-ui/core/Tooltip';
-import { Link } from 'react-router-dom';
-// import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -86,9 +85,7 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  // const location = useLocation()
-  // debugger
-  //location
+  const location = useLocation()
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -177,27 +174,59 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
     </Menu>
   );
 
+  const renderSearch = () => {
+    if (location.pathname === "/home")
+      return (
+        <>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
+          <InputBase
+            placeholder="Search Meeting by title…"
+            onChange={(e) => updateUserSearch(e)}
+            value={userSearch}
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </>
+      )
+    if (location.pathname === "/projects")
+      return (
+        <>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
+          <InputBase
+            placeholder="Search Project by name…"
+            onChange={(e) => updateUserSearch(e)}
+            value={userSearch}
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </>
+      )
+    else
+      return (
+        <InputBase
+          placeholder=" "
+        />
+
+      )
+  }
+
   return (
     <div className={classes.grow}>
       <AppBar position="static" style={{ background: '#2E3B55' }}>
         <Toolbar>
           <img src={logo} alt="Logo" className={classes.logo} />
-
-          {/* // const location = useLocation() */}
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search Project by name…"
-              onChange={(e) => updateUserSearch(e)}
-              value={userSearch}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+            {renderSearch()}
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
