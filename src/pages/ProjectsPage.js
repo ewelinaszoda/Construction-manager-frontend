@@ -66,8 +66,6 @@ export default function ProjectsPage({ logOut }) {
               variant="contained"
               color="primary"
               style={{ marginLeft: '30px' }}
-            // style={{ color: ' #2987c7', margin: "30px"}} 
-            // style={{ color: '#6cbe45', margin: "30px"}} 
             >
               ADD PROJECT
             </Button>

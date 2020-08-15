@@ -51,9 +51,7 @@ const Meeting = ({ meeting }) => {
           margin: "20px",
           display: "inline-block",
         }}
-
       >
-
         <Box p={1}>
           <Card className={classes.root} variant="outlined">
             <CardContent>

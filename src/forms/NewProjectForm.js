@@ -13,7 +13,6 @@ import SaveIcon from '@material-ui/icons/Save';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Input from '@material-ui/core/Input';
 import Box from '@material-ui/core/Box';
-// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import FormControl from '@material-ui/core/FormControl';
@@ -106,11 +105,8 @@ export default function NewProjectForm() {
     <>
       {!formSubmitted
         ? <div>
-
-
           <Container component="main" maxWidth="xs">
             <CssBaseline />
-
             <div className={classes.paper}>
               <Avatar className={classes.avatar}
                 src={logo}
@@ -120,22 +116,6 @@ export default function NewProjectForm() {
               <Typography component="h1" variant="h5">
                 Add New Project
         </Typography>
-              {/* <form className={classes.form} noValidate onSubmit={ handleCreateItem }> */}
-              {/* <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField onChange={ (e) => setName(e.target.value) }
-                value={name}
-                autoComplete="name"
-                name="Name"
-                variant="outlined"
-                required
-                fullWidth
-                id="Name"
-                label="Name"
-                autoFocus
-              />
-            </Grid> */}
-
               <form className={classes.form} noValidate
                 onSubmit={(e) => API.submitNewProject(e, {
                   name,
@@ -163,25 +143,6 @@ export default function NewProjectForm() {
                     autoFocus
                   />
                 </Grid>
-
-                {/* <input
-              type="file" name="file"
-              placeholder="Upload an Image"
-              onChange={uploadImage}
-            />
-            {loading
-              ? (<h5>Loading...</h5>)
-              : (<img src={image}
-                style={{ width: '300px' }}
-                alt="" />)}
-            <br></br>
-            <br></br>
-            <input
-              className="inputField"
-              type="text" name="Address"
-              placeholder="Address"
-              onChange={(e) => setAddress(e.target.value)} 
-              /> */}
                 <Grid item xs={12}>
                   <FormControl variant="outlined" className={classes.form}>
                     <Input type="file"
@@ -192,13 +153,6 @@ export default function NewProjectForm() {
                       placeholder="Upload an Image"
                       onChange={uploadImage}
                     />
-                    {/* <Button onClick={ uploadImage }
-                  variant="contained"
-                  color="secondary"
-                  className={classes.submit}
-                  >
-                  Confirm Upload Image File...
-                </Button> */}
                   </FormControl>
                 </Grid>
 
@@ -209,18 +163,6 @@ export default function NewProjectForm() {
                       <img src={image} style={{ width: '250px' }} alt="" />
                     )}
                 </Grid>
-
-
-
-                {/* <textarea
-              className="inputField"
-              type="text" name="Description"
-              placeholder="Description"
-              onChange={(e) => setDescription(e.target.value)} />
-          */}
-
-
-
                 <Grid item xs={12}>
                   <TextField
                     variant="outlined"
@@ -228,7 +170,6 @@ export default function NewProjectForm() {
                     fullWidth
                     id="address"
                     label="Address"
-                    // placeholder="Maximum 500 characters."
                     name="Address"
                     autoComplete="address"
                     value={address}
@@ -245,18 +186,14 @@ export default function NewProjectForm() {
                     fullWidth
                     id="description"
                     label="Description"
-                    // placeholder="Maximum 500 characters."
                     name="Description"
                     autoComplete="description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </Grid>
-
                 <br></br>
                 <br></br>
-
-
                 <Typography component="h6" variant="h6">
                   Contacts
         </Typography>
@@ -267,12 +204,10 @@ export default function NewProjectForm() {
                   <Grid item>
 
                     <TextField
-                      // variant="outlined"
                       required
                       fullWidth
                       id="Client"
                       label="Client"
-                      // placeholder="Maximum 500 characters."
                       name="Client"
                       autoComplete="Client"
                       value={client}
@@ -281,8 +216,6 @@ export default function NewProjectForm() {
                   </Grid>
                 </Grid>
                 <br></br>
-
-
                 <Grid container spacing={1} alignItems="flex-end" >
                   <Grid item>
                     <EmailIcon />
@@ -290,12 +223,10 @@ export default function NewProjectForm() {
                   <Grid item>
 
                     <TextField
-                      // variant="outlined"
                       required
                       fullWidth
                       id="Project_manager"
                       label="Project Manager"
-                      // placeholder="Maximum 500 characters."
                       name="Project_manager"
                       autoComplete="Project_manager"
                       value={project_manager}
@@ -304,8 +235,6 @@ export default function NewProjectForm() {
                   </Grid>
                 </Grid>
                 <br></br>
-
-
                 <Grid container spacing={1} alignItems="flex-end" >
                   <Grid item>
                     <EmailIcon />
@@ -313,12 +242,10 @@ export default function NewProjectForm() {
                   <Grid item>
 
                     <TextField
-                      // variant="outlined"
                       required
                       fullWidth
                       id="Site_manager"
                       label="Site Manager"
-                      // placeholder="Maximum 500 characters."
                       name="Site_manager"
                       autoComplete="Site_manager"
                       value={site_manager}
@@ -327,51 +254,6 @@ export default function NewProjectForm() {
                   </Grid>
                 </Grid>
                 <br></br>
-
-
-                {/* <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="client"
-                    label="Client"
-                    // placeholder="Maximum 500 characters."
-                    name="Client"
-                    autoComplete="client"
-                    value={client}
-                    onChange={(e) => setClient(e.target.value)}
-                  />
-                </Grid> */}
-
-
-
-
-
-
-                {/* <input
-              className="inputField"
-              type="text" name="Client"
-              placeholder="Client"
-              onChange={(e) => setClient(e.target.value)}
-               />
-            <br></br>
-            <br></br>
-            <input
-              className="inputField"
-              type="text" name="Project_Manager"
-              placeholder="Project Manager"
-              onChange={(e) => setProject_manager(e.target.value)} />
-            <br></br>
-            <br></br>
-            <input
-              className="inputField"
-              type="text" name="Site_Manager"
-              placeholder="Site Manager"
-              onChange={(e) => setSite_manager(e.target.value)} />
-            <br></br>
-            <br></br>
-            <div className={classes.margin}> */}
                 <Grid container spacing={1} alignItems="flex-end" >
                   <Grid item>
                     <EmailIcon />
@@ -379,12 +261,10 @@ export default function NewProjectForm() {
                   <Grid item>
 
                     <TextField
-                      // variant="outlined"
                       required
                       fullWidth
                       id="quantity urveyor"
                       label="Quantity surveyor"
-                      // placeholder="Maximum 500 characters."
                       name="Quantity_surveyor"
                       autoComplete="quantity_surveyor"
                       value={quantity_surveyor}
@@ -416,25 +296,7 @@ export default function NewProjectForm() {
                   />
                 </Grid>
 
-
-
-                {/* </div> */}
-
-                {/* <TextField
-              id="date"
-              label="Start date"
-              type="date"
-              defaultValue={start_date}
-              className={classes.textField}
-              onChange={(e) => setStart_date(e.target.value)}
-              InputLabelProps={{
-                shrink: true,
-              }} */}
-
                 <br></br>
-
-
-
                 <Grid item xs={12} sm={6}>
                   <TextField
                     autoComplete="date"
@@ -455,38 +317,6 @@ export default function NewProjectForm() {
                   />
                 </Grid>
 
-
-
-
-
-
-                {/* />
-            <br></br>
-            <br></br>
-            <br></br>
-            <TextField
-              id="date"
-              label="End date"
-              type="date"
-              defaultValue={end_date}
-              className={classes.textField}
-              onChange={(e) => setEnd_date(e.target.value)}
-              InputLabelProps={{
-                shrink: true,
-              }}
-            /> */}
-
-
-                {/* <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                  value="create user"
-                >
-                  Add Project
-                </Button> */}
                 <br></br>
 
                 <Button
@@ -501,18 +331,13 @@ export default function NewProjectForm() {
                 >
                   Save
                  </Button>
-
               </form>
             </div>
-
-
             <Box mt={5}>
               <Copyright />
             </Box>
           </Container>
         </div>
-
-
         : <div>
           <PrimarySearchAppBar />
           <br></br>
@@ -521,9 +346,7 @@ export default function NewProjectForm() {
             display="flex"
             alignItems="center"
             justifyContent="center"
-
           >
-
             <Typography variant="h5" component="h2">
               Project has been added to your Collection!
           </Typography>
@@ -539,21 +362,13 @@ export default function NewProjectForm() {
             <Link to='/projects' style={{ textDecoration: 'none' }}>
               <Button variant="contained"
                 color="primary"
-              // style={{ colorBackground: ' #f7b54b' }}
               >
-                {/* <Link to='/projects' style={{ textDecoration: 'none' }}>
-            <Button
-            variant="contained"
-            color="secondary"
-          > */}
-
               BACK TO MY PROJECT
               </Button>
             </Link>
             <Link to='/home' style={{ textDecoration: 'none' }}>
               <Button variant="contained"
                 color="secondary"
-              // style={{ colorBackground: '#6cbe45' }}
               >
                 BACK TO HOME
             </Button>
@@ -561,19 +376,7 @@ export default function NewProjectForm() {
           </Box>
         </div>
 
-
-
       }
     </>
   );
 }
-
-
-// style={{
-//   borderRadius: 35,
-//   backgroundColor: "#21b6ae",
-//   padding: "18px 36px",
-//   fontSize: "18px"
-// }}
-// variant="contained"
-// >

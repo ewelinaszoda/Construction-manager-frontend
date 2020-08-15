@@ -11,7 +11,6 @@ import API from '../API'
 import NewMeetingForm from "../forms/NewMeetingForm"
 import NewNoteForm from "../forms/NewNoteForm"
 import Collapse from '@material-ui/core/Collapse'
-// import clsx from 'clsx'
 
 const useStyles = makeStyles ({
   root: {
@@ -56,8 +55,9 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const renderOneNote = (note) => {
     return (
       <div key={note.id}>
-        <h5>{note.title}</h5>
-        <h5>{note.description}</h5>
+        <h5>Title: {note.title}</h5>
+        <h5>Description: {note.description}</h5>
+        <br></br>
       </div>
     )
   }
@@ -70,6 +70,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         <h5>Time: {meeting.start_time}</h5>
         <h5>Location: {meeting.location}</h5>
         <h5>Description: {meeting.description}</h5>
+        <br></br>
       </div>
     )
   }
@@ -132,11 +133,6 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary" onClick={handleClick}
-        //  className={clsx(classes.expand, {
-        //   [classes.expandOpen]: showDetails,
-        // })}
-        // aria-expanded={showDetails}
-        // aria-label="show more"
         >
           SHOW DETAILS
         </Button>
@@ -208,13 +204,3 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 }
 
 export default ProjectCard
-
-// PARSE DATE
-
-// const parseDate = (date) => {
-// const parsedDate = date.split('T')[1].split(".")[0].split(":")
-// const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-//   return interpolatedDate
-// }
-
-//njnjn

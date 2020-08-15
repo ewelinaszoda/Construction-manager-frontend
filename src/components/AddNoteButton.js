@@ -11,7 +11,6 @@ const AddNoteButton = props => {
         ADD NOTE
             </Button>
     </span>
-
   </div>
   )}
 

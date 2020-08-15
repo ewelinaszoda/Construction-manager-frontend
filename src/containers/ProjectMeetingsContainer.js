@@ -17,7 +17,6 @@ const ProjectMeetingsContainer = ({ meetings }) => {
     <div style={{ width: '100%' }}>
       <h3>MEETINGS</h3>
       <Box bgcolor="background.paper">
-
       <>
         {renderMeetingCard()}
       </>
