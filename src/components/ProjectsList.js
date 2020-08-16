@@ -18,10 +18,10 @@ export default function ProjectsList({ projects, removeProject, addMeetingToProj
   }
 
   return (
-    <Box>
-      <>
+    <Box className="projects-grid" 
+    style={{display:"flex", flexWrap:"wrap", justifyContent:"center", alignItems:"flex-start"}}
+    >
         {renderProjectCard()}
-      </>
     </Box>
   )
 }

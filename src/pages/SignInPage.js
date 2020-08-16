@@ -11,10 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-// for class function
 import { withStyles } from "@material-ui/core/styles";
-// for Hook use makeStyles
-// import { makeStyles } from '@material-ui/core/styles';
 import logo from "../images/logo.png";
 import Copyright from "../components/Copyright"
 import stylesSignIn from "../styles/stylesSignIn"

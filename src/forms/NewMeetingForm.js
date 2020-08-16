@@ -2,22 +2,9 @@ import React, { useState } from 'react'
 import API from '../API'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button';
-// import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-// import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-// import { withStyles } from "@material-ui/core/styles";
-// import Container from '@material-ui/core/Container';
-// import { Redirect } from 'react-router'
-// import logo from "../images/logo.png";
-// import Copyright from "../components/Copyright"
-// import stylesSignUp from "../styles/stylesSignUp"
-
-
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -49,7 +36,6 @@ const NewMeetingForm = (props) => {
   const [title, setTitle] = useState("")
   const [date, setDate] = useState(new Date())
   const [start_time, setStart_time] = useState("")
-  // const [end_time, setEnd_time] = useState("")
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
 
@@ -76,7 +62,6 @@ const NewMeetingForm = (props) => {
                 title,
                 date,
                 start_time,
-                // end_time,
                 location,
                 description,
               });
@@ -85,7 +70,6 @@ const NewMeetingForm = (props) => {
                 title,
                 date,
                 start_time,
-                // end_time,
                 location,
                 description,
               }, submitForm)
@@ -189,6 +173,5 @@ const NewMeetingForm = (props) => {
     </>
   );
 }
-
 
 export default NewMeetingForm

@@ -21,7 +21,6 @@
   font-feature-settings: 'liga';
 }
 
-
 /* VARIABLES */
 
 :root {
@@ -32,7 +31,6 @@
   --bg-color: #f9f9f9;
   --neutral-color: #fff;
 }
-
 
 /* GENERAL */
 
@@ -76,7 +74,6 @@ body {
   max-width: 50em;
 }
 
-
 /* GRID */
 
 .row {
@@ -112,7 +109,6 @@ body {
   justify-content: flex-end;
   text-align: right;
 }
-
 
 /* Calendar */
 

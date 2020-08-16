@@ -102,7 +102,6 @@ const updateUserData = (UserData, id) => {
 }
 
 const getMyMeetings = () => {
-  // return get(baseURL + "/project-meetings")
   return get(baseURL + "/my-meetings")
     .then(resp => resp.json())
     .catch(error => console.log(error))
@@ -120,7 +119,6 @@ const postMeeting = (url, data) => {
   };
   return fetch(url, configurationObject)
 }
-
 
 const submitNewMeeting = (e, data, submitForm) => {
   e.preventDefault()

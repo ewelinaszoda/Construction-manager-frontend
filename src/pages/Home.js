@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
-// import PrimarySearchAppBar from "../layout/PrimarySearchAppBar.js"
 import PrimarySearchAppBar from "../layout/PrimarySearchAppBar"
 import GetCurrentDate from "../components/GetCurrentDate.js"
 import Box from '@material-ui/core/Box';
 import API from "../API"
-// import Weather from "../components/Weather"
 import Calendar from "../components/Calendar"
 import Footer from "../layout/Footer"
 import MeetingsContainer from "../containers/MeetingsContainer"
-
 import Background from '../images/background.jpg';
 
 const Home = (props) => {
@@ -83,11 +80,9 @@ const Home = (props) => {
         <br></br>
       </div>
       <MeetingsContainer meetings={filterMeetings()}
-      // meetings={meetings} 
       />
       <Footer />
     </div>
   )
-
 }
 export default Home

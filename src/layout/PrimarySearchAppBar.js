@@ -216,7 +216,6 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
         <InputBase
           placeholder=" "
         />
-
       )
   }
 

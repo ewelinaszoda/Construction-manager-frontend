@@ -11,18 +11,22 @@ import API from '../API'
 import NewMeetingForm from "../forms/NewMeetingForm"
 import NewNoteForm from "../forms/NewNoteForm"
 import Collapse from '@material-ui/core/Collapse'
-// import clsx from 'clsx'
 
 const useStyles = makeStyles ({
-  root: {
-    maxWidth: 345,
+  card: {
     margin: "20px",
     display: "inline-block",
+    maxHeight: "314px",
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9,
   }, 
+  active: {
+    maxHeight: "auto", 
+    margin: "20px",
+    display: "inline-block",
+  }
 });
 
 const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToProject }) => {
@@ -56,8 +60,9 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const renderOneNote = (note) => {
     return (
       <div key={note.id}>
-        <h5>{note.title}</h5>
-        <h5>{note.description}</h5>
+        <h5>Title: {note.title}</h5>
+        <h5>Description: {note.description}</h5>
+        <br></br>
       </div>
     )
   }
@@ -70,6 +75,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         <h5>Time: {meeting.start_time}</h5>
         <h5>Location: {meeting.location}</h5>
         <h5>Description: {meeting.description}</h5>
+        <br></br>
       </div>
     )
   }
@@ -109,7 +115,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={showDetails? classes.card && classes.active : classes.card  }>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -132,11 +138,6 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary" onClick={handleClick}
-        //  className={clsx(classes.expand, {
-        //   [classes.expandOpen]: showDetails,
-        // })}
-        // aria-expanded={showDetails}
-        // aria-label="show more"
         >
           SHOW DETAILS
         </Button>
@@ -150,14 +151,11 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
       <CardContent>
         {showDetails
           ? <div>
-            <>
               <Typography variant="h6" component="h3" align="center" style={{ color: '#243c8c' }}>
                 CONTACTS
               </Typography>
               <hr />
-              <>{renderDetails()}</>
-            </>
-            <>
+              {renderDetails()}
               <Typography variant="h6" component="h2" align="center" style={{ color: '#243c8c' }}>
                 MEETINGS
               </Typography>
@@ -171,15 +169,11 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
               >
                 ADD MEETING
               </Button>
-              {addMeeting
-                ? <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />
-                : null
+              {addMeeting && <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />  
               }
               <>{renderMeetings()}</>
-            </>
             <br></br>
             <br></br>
-            <>
               <Typography variant="h5" component="h2" align="center" style={{ color: '#243c8c' }}>
                 NOTES
               </Typography>
@@ -192,12 +186,9 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
                 onClick={handleAddNote}>
                 ADD NOTE
               </Button>
-              {addNote
-                ? <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
-                : null
+              {addNote && <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
               }
-              <>{renderNotes()}</>
-            </>
+              {renderNotes()}
           </div>
           : null
         }
@@ -208,13 +199,3 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
 }
 
 export default ProjectCard
-
-// PARSE DATE
-
-// const parseDate = (date) => {
-// const parsedDate = date.split('T')[1].split(".")[0].split(":")
-// const interpolatedDate = `${parsedDate[0]}:${parsedDate[1]}`
-//   return interpolatedDate
-// }
-
-//njnjn

@@ -11,7 +11,6 @@ const AddMeetingButton = props => {
         ADD MEETING
             </Button>
     </span>
-
   </div>
   )}
 
