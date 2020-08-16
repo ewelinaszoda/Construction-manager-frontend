@@ -13,15 +13,20 @@ import NewNoteForm from "../forms/NewNoteForm"
 import Collapse from '@material-ui/core/Collapse'
 
 const useStyles = makeStyles ({
-  root: {
-    maxWidth: 345,
+  card: {
     margin: "20px",
     display: "inline-block",
+    maxHeight: "314px",
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9,
   }, 
+  active: {
+    maxHeight: "auto", 
+    margin: "20px",
+    display: "inline-block",
+  }
 });
 
 const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToProject }) => {
@@ -110,7 +115,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={showDetails? classes.card && classes.active : classes.card  }>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -146,14 +151,11 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
       <CardContent>
         {showDetails
           ? <div>
-            <>
               <Typography variant="h6" component="h3" align="center" style={{ color: '#243c8c' }}>
                 CONTACTS
               </Typography>
               <hr />
-              <>{renderDetails()}</>
-            </>
-            <>
+              {renderDetails()}
               <Typography variant="h6" component="h2" align="center" style={{ color: '#243c8c' }}>
                 MEETINGS
               </Typography>
@@ -167,15 +169,11 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
               >
                 ADD MEETING
               </Button>
-              {addMeeting
-                ? <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />
-                : null
+              {addMeeting && <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />  
               }
               <>{renderMeetings()}</>
-            </>
             <br></br>
             <br></br>
-            <>
               <Typography variant="h5" component="h2" align="center" style={{ color: '#243c8c' }}>
                 NOTES
               </Typography>
@@ -188,12 +186,9 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
                 onClick={handleAddNote}>
                 ADD NOTE
               </Button>
-              {addNote
-                ? <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
-                : null
+              {addNote && <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
               }
-              <>{renderNotes()}</>
-            </>
+              {renderNotes()}
           </div>
           : null
         }
