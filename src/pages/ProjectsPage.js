@@ -60,6 +60,8 @@ export default function ProjectsPage({ logOut }) {
         <Typography variant="h4" marked="center" align="center" component="h2">
           YOUR PROJECTS
       </Typography>
+      <br></br>
+      <br></br>
         <div>
           <Link to='/new-project-form' style={{ textDecoration: 'none' }}>
             <Button

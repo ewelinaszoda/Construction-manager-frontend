@@ -13,19 +13,23 @@ import NewNoteForm from "../forms/NewNoteForm"
 import Collapse from '@material-ui/core/Collapse'
 
 const useStyles = makeStyles ({
-  card: {
-    margin: "20px",
+  root: {
+    margin: " 20px",
     display: "inline-block",
-    maxHeight: "314px",
+    minHeight: 350,
+    maxWidth: 345,
+    minWidth: 345,
   },
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9,
   }, 
   active: {
-    maxHeight: "auto", 
     margin: "20px",
     display: "inline-block",
+    maxHeight: "auto",
+    maxWidth: 345,
+    minWidth: 345,
   }
 });
 
@@ -115,7 +119,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   }
 
   return (
-    <Card className={showDetails? classes.card && classes.active : classes.card  }>
+    <Card className={showDetails? classes.active : classes.root }>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -169,9 +173,13 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
               >
                 ADD MEETING
               </Button>
-              {addMeeting && <NewMeetingForm project={project} addMeetingToProject={addMeetingToProject} />  
+              {addMeeting && <NewMeetingForm 
+              style={{maxWidth:'294.7px'}}
+              project={project} 
+              addMeetingToProject={addMeetingToProject} 
+              />  
               }
-              <>{renderMeetings()}</>
+              {renderMeetings()}
             <br></br>
             <br></br>
               <Typography variant="h5" component="h2" align="center" style={{ color: '#243c8c' }}>

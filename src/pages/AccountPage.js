@@ -17,7 +17,7 @@ const AccountPage = ({ user, logOut }) => {
   };
 
   return (
-    <div>
+    <div style={{minHeight: "70vh"}}>
       {renderAccountInfo()}
     </div>
   )

@@ -14,7 +14,8 @@ const ProjectMeetingsContainer = ({ meetings }) => {
   }
 
   return (
-    <div style={{ width: '100%' }}>
+    <div 
+    style={{ width: '100%' }}>
       <h3>MEETINGS</h3>
       <Box bgcolor="background.paper">
       <>

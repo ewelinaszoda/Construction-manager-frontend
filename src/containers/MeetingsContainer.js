@@ -9,7 +9,7 @@ const MeetingsContainer = ({ meetings }) => {
       return meetings.map(meeting =>
         < Meeting
           key={meeting.id}
-          meeting={meeting} 
+          meeting={meeting}
         />
       )
     }
@@ -23,9 +23,15 @@ const MeetingsContainer = ({ meetings }) => {
       </Typography>
       <br></br>
       <br></br>
-        <>
-          {renderMeetingCard()}
-        </>
+      <div style={{
+        width: '100%',
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        alignItems: "flex-start",
+      }}>
+        {renderMeetingCard()}
+      </div>
     </>
   )
 
