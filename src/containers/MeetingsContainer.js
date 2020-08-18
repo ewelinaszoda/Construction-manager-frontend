@@ -24,6 +24,7 @@ const MeetingsContainer = ({ meetings }) => {
       <br></br>
       <br></br>
       <div style={{
+        // marginTop: '20px'
         width: '100%',
         display: "flex",
         flexWrap: "wrap",
