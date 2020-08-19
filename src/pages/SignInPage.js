@@ -33,7 +33,11 @@ class SignInPage extends React.Component {
     event.preventDefault();
     API.signIn(this.state)
       .then(jso => {
-        this.props.signIn(jso.user, jso.token)
+        if(jso.message) {
+         alert(jso.message)
+        } else  {
+          this.props.signIn(jso.user, jso.token)
+        }
       })
 
     this.clearForm();
