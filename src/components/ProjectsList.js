@@ -22,7 +22,8 @@ export default function ProjectsList({ projects, removeProject, addMeetingToProj
       style={{
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "center",
+        marginLeft: '130px',
+        // justifyContent: "center",
         alignItems: "flex-start",
       }}
     >

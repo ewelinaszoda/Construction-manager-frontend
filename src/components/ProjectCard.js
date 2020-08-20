@@ -12,7 +12,7 @@ import NewMeetingForm from "../forms/NewMeetingForm"
 import NewNoteForm from "../forms/NewNoteForm"
 import Collapse from '@material-ui/core/Collapse'
 
-const useStyles = makeStyles ({
+const useStyles = makeStyles({
   root: {
     margin: " 20px",
     display: "inline-block",
@@ -23,7 +23,7 @@ const useStyles = makeStyles ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9,
-  }, 
+  },
   active: {
     margin: "20px",
     display: "inline-block",
@@ -40,6 +40,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   const [showDetails, setShowDetails] = useState(false)
   const [addMeeting, setAddMeeting] = useState(false)
   const [addNote, setAddNote] = useState(false)
+  const [image] = useState("https://stocksnap.io/photo/architecture-skyscraper-JOO9QP7GKN")
 
   // RENDER MEETINGS
 
@@ -71,9 +72,9 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
     )
   }
 
-  const renderOneMeeting = (meeting) => { 
+  const renderOneMeeting = (meeting) => {
     return (
-      <div  key={meeting.id}>
+      <div key={meeting.id}>
         <h5>Title: {meeting.title}</h5>
         <h5>Date: {meeting.date}</h5>
         <h5>Time: {meeting.start_time}</h5>
@@ -119,11 +120,11 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
   }
 
   return (
-    <Card className={showDetails? classes.active : classes.root }>
+    <Card className={showDetails ? classes.active : classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={project.image}
+          image={project.image ? project.image : image}
           title="Project Image"
         >
         </CardMedia>
@@ -152,9 +153,9 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
         </Button>
       </CardActions>
       <Collapse in={showDetails} timeout="auto" unmountOnExit>
-      <CardContent>
-        {showDetails
-          ? <div>
+        <CardContent>
+          {showDetails
+            ? <div>
               <Typography variant="h6" component="h3" align="center" style={{ color: '#243c8c' }}>
                 CONTACTS
               </Typography>
@@ -173,15 +174,14 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
               >
                 ADD MEETING
               </Button>
-              {addMeeting && <NewMeetingForm 
-              style={{minWidth:'294.7px'}}
-              project={project} 
-              addMeetingToProject={addMeetingToProject} 
-              />  
+              {addMeeting && <NewMeetingForm
+                project={project}
+                addMeetingToProject={addMeetingToProject}
+              />
               }
               {renderMeetings()}
-            <br></br>
-            <br></br>
+              <br></br>
+              <br></br>
               <Typography variant="h5" component="h2" align="center" style={{ color: '#243c8c' }}>
                 NOTES
               </Typography>
@@ -191,16 +191,20 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
                 variant="contained"
                 color="primary"
                 style={{ marginLeft: '30px' }}
-                onClick={handleAddNote}>
+                onClick={handleAddNote}
+              >
                 ADD NOTE
               </Button>
-              {addNote && <NewNoteForm project={project} addNoteToProject={addNoteToProject} />
+              {addNote && <NewNoteForm
+                project={project}
+                addNoteToProject={addNoteToProject}
+              />
               }
               {renderNotes()}
-          </div>
-          : null
-        }
-      </CardContent>
+            </div>
+            : null
+          }
+        </CardContent>
       </Collapse>
     </Card>
   );

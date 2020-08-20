@@ -49,9 +49,9 @@ const NewNoteForm = (props) => {
           <br></br>
           <br></br>
           <Typography component="h3" variant="h6" align="center">
-           New Note Form
-        </Typography>
-        <br></br>
+            New Note Form
+          </Typography>
+          <br></br>
           <form className={classes.container} noValidate
             onSubmit={(e) => {
               props.addNoteToProject(props.project.id, {
