@@ -16,7 +16,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import { Link, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-
   logo: {
     maxWidth: 75,
     marginLeft: 0,
@@ -189,6 +188,7 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
+            style={{ minWidth: '235px' }}
             inputProps={{ 'aria-label': 'search' }}
           />
         </>
@@ -207,6 +207,7 @@ export default function PrimarySearchAppBar({ logOut, updateUserSearch, userSear
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
+            style={{ minWidth: '235px' }}
             inputProps={{ 'aria-label': 'search' }}
           />
         </>

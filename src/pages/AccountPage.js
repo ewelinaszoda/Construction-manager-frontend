@@ -10,14 +10,16 @@ const AccountPage = ({ user, logOut }) => {
       <>
         <PrimarySearchAppBar logOut={logOut} />
         <br></br>
-        <Account user={user} />
-        <Footer/>
+        <Account
+          user={user}
+        />
+        <Footer />
       </>
     );
   };
 
   return (
-    <div style={{minHeight: "70vh"}}>
+    <div>
       {renderAccountInfo()}
     </div>
   )

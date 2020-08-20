@@ -76,8 +76,9 @@ export default function ProjectsPage({ logOut }) {
         <br></br>
         <Box
           style={{
+            minHeight: '50vh',
             marginLeft: "auto",
-            marginRight: "auto"
+            marginRight: "auto",
           }}
         >
           <ProjectsList projects={filterProjects()} removeProject={removeProject} addMeetingToProject={addMeetingToProject} addNoteToProject={addNoteToProject} />

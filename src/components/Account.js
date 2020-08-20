@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     minWidth: 275,
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
+    minHeight: '65vh',
   },
   bullet: {
     display: 'inline-block',

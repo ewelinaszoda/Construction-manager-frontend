@@ -6,8 +6,6 @@ const stylesSingIn = theme => ({
     height: '100vh',
   },
   image: {
-    // backgroundImage: 'url(https://shanetraylen.com/wp-content/uploads/2019/02/Fotolia_98303431_Subscription_Monthly_M-699x408.jpg)',
-    // backgroundImage: 'url(https://shanetraylen.com/wp-content/uploads/2019/02/Fotolia_98303431_Subscription_Monthly_M-699x408.jpg)',
     backgroundImage: `url(${BackgroundImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:

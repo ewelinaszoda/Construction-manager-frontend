@@ -174,7 +174,7 @@ const ProjectCard = ({ project, removeProject, addMeetingToProject, addNoteToPro
                 ADD MEETING
               </Button>
               {addMeeting && <NewMeetingForm 
-              style={{maxWidth:'294.7px'}}
+              style={{minWidth:'294.7px'}}
               project={project} 
               addMeetingToProject={addMeetingToProject} 
               />  
