@@ -1,6 +1,58 @@
-Management platform that keeps track of projects with quick access to information, with search and adds functionality.
+NB: The Rails backend for this project can be found [here](https://github.com/ewelinaszoda/Construction-manager-backend)
+
+# Construction manager
+
+Management platform that keeps track of projects with quick access to information, with search and adds functionality. 
+
+## Table of Contents 
+
+Screenshots
+Demo
+Technologies
+Usage and Features
+Installation
+License
+
+## Screenshots
+
+
+## Demo 
+
+A full video demo is available here
+
+## Technologies
+
+This project was created with:
+
+React.js
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Usage and Features
+
+Construction Manager allows users to manage and keep track on projects. Users can:
+
+Sign up and sign in, to keep tract of their projects
+Edit personal information
+Create the project with an image, decription, location and email's contacts
+Create a meeting and note assigned to the project
+See current date, calendar, and meetings on the main page
+View and search by project's name of all projects
+View and search by meeting's name of all meetings
+Delete the project
+
+## Instalation
+
+To use Construction Manager locally, you will need Git and Node Package Manager installed. You will also need the backend to be running, which can be found https://github.com/ewelinaszoda/Construction-manager-backend. After this, you will only need to clone this repo and launch the frontend to start following commands:
+
+npm install
+
+npm start
+
+Utilised JSON Web Tokens and localStorage to store encrypted user information client-side
+Developed a Rails API backend utilising MCS (model, controller, Serializer) concept and CRUD actions
+Engineered user interface employing React with Material-UI for styling 
+Improved user experience with responsive/mobile design techniques and validations with client-side error handling
 
 ## Available Scripts
 
