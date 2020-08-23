@@ -13,14 +13,14 @@ Usage and Features
 Installation
 License
 
-### Screenshots
+## Screenshots
 
 
-### Demo 
+## Demo 
 
 A full video demo is available here
 
-### Technologies
+## Technologies
 
 This project was created with:
 
@@ -28,7 +28,7 @@ React.js
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### Usage and Features
+## Usage and Features
 
 Construction Manager allows users to manage and keep track on projects. Users can:
 
@@ -41,7 +41,7 @@ View and search by project's name of all projects
 View and search by meeting's name of all meetings
 Delete the project
 
-### Instalation
+## Instalation
 
 To use Construction Manager locally, you will need Git and Node Package Manager installed. You will also need the backend to be running, which can be found https://github.com/ewelinaszoda/Construction-manager-backend. After this, you will only need to clone this repo and launch the frontend to start. Run following commands:
 
