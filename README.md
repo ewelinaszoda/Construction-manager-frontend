@@ -18,7 +18,7 @@ License
 
 ## Demo 
 
-A full video demo is available here
+A full video demo is available [here](https://www.loom.com/share/9726dc0ad0d447c1a9abff883e3a2b58)
 
 ## Technologies
 
